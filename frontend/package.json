@@ -10,17 +10,18 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "babel-loader": "8.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "typescript": "^4.1.2",
-    "web-vitals": "^1.0.1",
-    "babel-loader": "8.1.0"
+    "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coveragelocal": "set CI=true && react-scripts test --coverage",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -59,6 +60,7 @@
     "@storybook/addon-links": "^6.2.8",
     "@storybook/node-logger": "^6.2.8",
     "@storybook/preset-create-react-app": "^3.1.7",
-    "@storybook/react": "^6.2.8"
+    "@storybook/react": "^6.2.8",
+    "coveralls": "^3.1.0"
   }
 }
