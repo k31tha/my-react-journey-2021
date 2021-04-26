@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components/Club/Club Details Basic Club 1`] = `
+Array [
+  <p>
+    Club name: 
+    Knaphill
+  </p>,
+  <p>
+    Club address: 
+    dummy street, dummy town, DD333MY
+  </p>,
+]
+`;
+
+exports[`Storyshots Components/Club/Club Details Basic Templated Club 1`] = `
+Array [
+  <p>
+    Club name: 
+    Knaphill
+  </p>,
+  <p>
+    Club address: 
+    my address
+  </p>,
+]
+`;
+
+exports[`Storyshots Components/Club/Club Details Club with Logo 1`] = `
+Array [
+  <p>
+    Club name: 
+    Woking
+  </p>,
+  <p>
+    Club address: 
+    dummy street, dummy town, DD333MY
+  </p>,
+]
+`;
