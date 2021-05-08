@@ -1,11 +1,11 @@
 import * as React from 'react';
-import ClubDetails from './components/club/ClubDetails';
+import ClubDetailsContainer from './containers/ClubDetailsContainer';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <ClubDetails clubId={1} clubName={"Woking"} clubLogo={null}  clubAddress={"dummy street, dummy town, DD333MY"}/>
+      <ClubDetailsContainer clubUrl={'woking-fc'} />
     </div>
   );
 }

@@ -8,7 +8,7 @@ describe('ClubDetails', () => {
 //})
 
 test('renders basic club details', () => {
-    // render is from react testing library, so dont need reactDOM.render if just using jest
+    // render is from react testing library, so don't need reactDOM.render if just using jest
     // can add component as second parameter but defaults to div
   render( <ClubDetails clubId={1} clubName={"Woking"} clubLogo={null}  clubAddress={"dummy street, dummy town, DD333MY"}/>);
   const headingElement = screen.getByText(/Woking/i);
