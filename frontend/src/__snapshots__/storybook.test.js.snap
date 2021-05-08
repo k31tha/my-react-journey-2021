@@ -41,40 +41,24 @@ Array [
 
 exports[`Storyshots Components/Club/Club Details Container Basic Club one 1`] = `
 <p>
-  club not found 
-  knaphill
+  club details not setup
 </p>
 `;
 
 exports[`Storyshots Components/Club/Club Details Container Basic Club two 1`] = `
-Array [
-  <p>
-    Club name: 
-    woking
-  </p>,
-  <p>
-    Club address: 
-    address
-  </p>,
-]
+<p>
+  club details not setup
+</p>
 `;
 
 exports[`Storyshots Components/Club/Club Details Container Basic Templated Club Details 1`] = `
-Array [
-  <p>
-    Club name: 
-    woking
-  </p>,
-  <p>
-    Club address: 
-    address
-  </p>,
-]
+<p>
+  club details not setup
+</p>
 `;
 
 exports[`Storyshots Components/Club/Club Details Container Unknown Club 1`] = `
 <p>
-  club not found 
-  unknown
+  club details not setup
 </p>
 `;
