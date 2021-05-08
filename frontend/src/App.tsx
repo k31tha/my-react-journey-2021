@@ -5,7 +5,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <ClubDetailsContainer clubUrl={'woking-fc'} />
+      <ClubDetailsContainer clubUrl={'woking'} />
     </div>
   );
 }

@@ -5,16 +5,27 @@ export type Props = {
   clubUrl: string;
 };
 
-const ClubDetailsContainer = ({clubUrl}: Props): JSX.Element => {
-  const clubDetail: ClubDetail = {
+const clubDetail: Array<ClubDetail> = [
+  {
     clubId: 1,
     clubName: 'woking',
     clubAddress: 'address',
     clubLogo: null,
-  };
+    clubUrl: 'woking',
+  },
+  {
+    clubId: 2,
+    clubName: 'knaphill fc',
+    clubAddress: 'address',
+    clubLogo: null,
+    clubUrl: 'knaphill-fc',
+  },
+];
+
+const ClubDetailsContainer = ({clubUrl}: Props): JSX.Element => {
   return (
     <>
-      <ClubDetails {...clubDetail} />
+      <ClubDetails {...clubDetail.find(club => club.clubUrl === clubUrl)} />
     </>
   );
 };
