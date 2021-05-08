@@ -23,9 +23,17 @@ const clubDetail: Array<ClubDetail> = [
 ];
 
 const ClubDetailsContainer = ({clubUrl}: Props): JSX.Element => {
+  const club = clubDetail.find(club => club.clubUrl === clubUrl);
+  if (club === undefined) {
+    return (
+      <>
+        <p>club not found {clubUrl}</p>
+      </>
+    );
+  }
   return (
     <>
-      <ClubDetails {...clubDetail.find(club => club.clubUrl === clubUrl)} />
+      <ClubDetails {...club} />
     </>
   );
 };
