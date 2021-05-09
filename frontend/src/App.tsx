@@ -6,9 +6,8 @@ function App() {
   return (
     <div className="App">
       <ClubDetailsContainer clubUrl={'woking'} />
-      <ClubDetailsContainer clubUrl={'knaphill-fc'} />
     </div>
   );
 }
-
+//<ClubDetailsContainer clubUrl={'knaphill-fc'} />
 export default App;

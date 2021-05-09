@@ -25,51 +25,61 @@ export type Props = {
 const ClubDetailsContainer = ({clubUrl}: Props): JSX.Element => {
   // Hold Club Details in State
   // set type
-  console.log('before set state ' + clubUrl);
+  console.log('before setClubDetails state ' + clubUrl);
   const [clubDetails, setClubDetails] = React.useState<Array<ClubDetail>>();
-  console.log('after set state ' + clubUrl);
+  console.log('after setClubDetails state ' + clubUrl);
+  console.log('before setIsLoading state ' + clubUrl);
+  const [isLoading, setIsLoading] = React.useState<Boolean>(true);
+  console.log('after setIsLoading state ' + clubUrl);
   React.useEffect(() => {
-    console.log('in useeffect before set state club details ' + clubUrl);
-    setClubDetails([
-      {
-        clubId: 1,
-        clubName: 'woking',
-        clubAddress: 'address',
-        clubLogo: null,
-        clubUrl: 'woking',
-      },
-      {
-        clubId: 2,
-        clubName: 'knaphill fc',
-        clubAddress: 'address',
-        clubLogo: null,
-        clubUrl: 'knaphill-fc',
-      },
-    ]);
-    console.log('in useeffect after set state club details ' + clubUrl);
+    console.log('in useeffect before setTimeout ' + clubUrl);
+    const timeout = setTimeout(() => {
+      console.log('in setTimeout before set state club details ' + clubUrl);
+      setClubDetails([
+        {
+          clubId: 1,
+          clubName: 'woking',
+          clubAddress: 'address',
+          clubLogo: null,
+          clubUrl: 'woking',
+        },
+        {
+          clubId: 2,
+          clubName: 'knaphill fc',
+          clubAddress: 'address',
+          clubLogo: null,
+          clubUrl: 'knaphill-fc',
+        },
+      ]);
+      setIsLoading(false);
+    }, 3000);
+    console.log('in useeffect after set setTimeout ' + clubUrl);
   }, [clubUrl]);
-  if (clubDetails === undefined) {
-    console.log('clubDetails undefined ' + clubUrl);
+  if (isLoading) {
+    console.log('clubDetails loading ' + clubUrl);
     return (
       <>
-        <p>club details not setup</p>
+        <p>club details loading</p>
+      </>
+    );
+  } else {
+    console.log('find club details ' + clubUrl);
+    //@ts-expect-error
+    const club = clubDetails.find(club => club.clubUrl === clubUrl);
+    if (club === undefined) {
+      console.log('club undefined ' + clubUrl);
+      return (
+        <>
+          <p>club not found {clubUrl}</p>
+        </>
+      );
+    }
+    return (
+      <>
+        <ClubDetails {...club} />
       </>
     );
   }
-  const club = clubDetails.find(club => club.clubUrl === clubUrl);
-  if (club === undefined) {
-    console.log('club undefined ' + clubUrl);
-    return (
-      <>
-        <p>club not found {clubUrl}</p>
-      </>
-    );
-  }
-  return (
-    <>
-      <ClubDetails {...club} />
-    </>
-  );
 };
 
 export default ClubDetailsContainer;
