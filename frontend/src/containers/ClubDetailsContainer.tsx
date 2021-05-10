@@ -25,16 +25,16 @@ export type Props = {
 const ClubDetailsContainer = ({clubUrl}: Props): JSX.Element => {
   // Hold Club Details in State
   // set type
-  console.log('before setClubDetails state ' + clubUrl);
+  //console.log('before setClubDetails state ' + clubUrl);
   const [clubDetails, setClubDetails] = React.useState<Array<ClubDetail>>();
-  console.log('after setClubDetails state ' + clubUrl);
-  console.log('before setIsLoading state ' + clubUrl);
+  //console.log('after setClubDetails state ' + clubUrl);
+  //console.log('before setIsLoading state ' + clubUrl);
   const [isLoading, setIsLoading] = React.useState<Boolean>(true);
-  console.log('after setIsLoading state ' + clubUrl);
+  //console.log('after setIsLoading state ' + clubUrl);
   React.useEffect(() => {
-    console.log('in useeffect before setTimeout ' + clubUrl);
+    //console.log('in useeffect before setTimeout ' + clubUrl);
     const timeout = setTimeout(() => {
-      console.log('in setTimeout before set state club details ' + clubUrl);
+      //console.log('in setTimeout before set state club details ' + clubUrl);
       setClubDetails([
         {
           clubId: 1,
@@ -52,22 +52,22 @@ const ClubDetailsContainer = ({clubUrl}: Props): JSX.Element => {
         },
       ]);
       setIsLoading(false);
-    }, 3000);
-    console.log('in useeffect after set setTimeout ' + clubUrl);
+    }, 900);
+    //console.log('in useeffect after set setTimeout ' + clubUrl);
   }, [clubUrl]);
   if (isLoading) {
-    console.log('clubDetails loading ' + clubUrl);
+    //console.log('clubDetails loading ' + clubUrl);
     return (
       <>
         <p>club details loading</p>
       </>
     );
   } else {
-    console.log('find club details ' + clubUrl);
+    //console.log('find club details ' + clubUrl);
     //@ts-expect-error
     const club = clubDetails.find(club => club.clubUrl === clubUrl);
     if (club === undefined) {
-      console.log('club undefined ' + clubUrl);
+      //console.log('club undefined ' + clubUrl);
       return (
         <>
           <p>club not found {clubUrl}</p>

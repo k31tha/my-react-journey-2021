@@ -1,64 +1,70 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Storyshots Components/Club/Club Details Basic Club 1`] = `
-Array [
+<div
+  data-testid="clubdetail"
+>
   <p>
     Club name: 
     Knaphill
-  </p>,
+  </p>
   <p>
     Club address: 
     dummy street, dummy town, DD333MY
-  </p>,
-]
+  </p>
+</div>
 `;
 
 exports[`Storyshots Components/Club/Club Details Basic Templated Club 1`] = `
-Array [
+<div
+  data-testid="clubdetail"
+>
   <p>
     Club name: 
     Knaphill
-  </p>,
+  </p>
   <p>
     Club address: 
     my address
-  </p>,
-]
+  </p>
+</div>
 `;
 
 exports[`Storyshots Components/Club/Club Details Club with Logo 1`] = `
-Array [
+<div
+  data-testid="clubdetail"
+>
   <p>
     Club name: 
     Woking
-  </p>,
+  </p>
   <p>
     Club address: 
     dummy street, dummy town, DD333MY
-  </p>,
-]
+  </p>
+</div>
 `;
 
 exports[`Storyshots Components/Club/Club Details Container Basic Club one 1`] = `
 <p>
-  club details not setup
+  club details loading
 </p>
 `;
 
 exports[`Storyshots Components/Club/Club Details Container Basic Club two 1`] = `
 <p>
-  club details not setup
+  club details loading
 </p>
 `;
 
 exports[`Storyshots Components/Club/Club Details Container Basic Templated Club Details 1`] = `
 <p>
-  club details not setup
+  club details loading
 </p>
 `;
 
 exports[`Storyshots Components/Club/Club Details Container Unknown Club 1`] = `
 <p>
-  club details not setup
+  club details loading
 </p>
 `;

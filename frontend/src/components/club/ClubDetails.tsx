@@ -16,10 +16,10 @@ const ClubDetails = ({
   clubUrl,
 }: ClubDetail): JSX.Element => {
   return (
-    <>
+    <div data-testid="clubdetail">
       <p>Club name: {clubName}</p>
       <p>Club address: {clubAddress}</p>
-    </>
+    </div>
   );
 };
 
