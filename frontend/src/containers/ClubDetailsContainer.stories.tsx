@@ -1,6 +1,9 @@
 import * as React from 'react';
 import ClubDetailsContainer, {Props} from './ClubDetailsContainer';
 import {Meta, Story} from '@storybook/react';
+
+// TODO: Add Delay to help snapshot
+
 export default {
   title: 'Components/Club/Club Details Container',
   component: ClubDetailsContainer,
