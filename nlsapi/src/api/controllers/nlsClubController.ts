@@ -70,6 +70,7 @@ exports.find_a_club = function (req: any, res: any) {
     (x) => x.clubUrl.toLowerCase() === req.params.url.toLowerCase()
   );
   if (clubRes === undefined || clubRes === null)
+    //res.status(404).send("Not found").json(clubRes);
     res.status(404).send("Not found");
   else {
     res.json(clubRes);

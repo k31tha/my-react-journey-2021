@@ -1,82 +1,73 @@
 import * as React from 'react';
+import axios from 'axios';
 import ClubDetails, {ClubDetail} from '../components/club/ClubDetails';
 
 export type Props = {
   clubUrl: string;
 };
 
-// const clubDetail: Array<ClubDetail> = [
-//   {
-//     clubId: 1,
-//     clubName: 'woking',
-//     clubAddress: 'address',
-//     clubLogo: null,
-//     clubUrl: 'woking',
-//   },
-//   {
-//     clubId: 2,
-//     clubName: 'knaphill fc',
-//     clubAddress: 'address',
-//     clubLogo: null,
-//     clubUrl: 'knaphill-fc',
-//   },
-// ];
+export type ProcessingStatus =
+  | 'pending'
+  | 'complete'
+  | 'loaded'
+  | 'error'
+  | 'warning'
+  | 'notfound';
 
 const ClubDetailsContainer = ({clubUrl}: Props): JSX.Element => {
   // Hold Club Details in State
-  // set type
-  //console.log('before setClubDetails state ' + clubUrl);
-  const [clubDetails, setClubDetails] = React.useState<Array<ClubDetail>>();
-  //console.log('after setClubDetails state ' + clubUrl);
-  //console.log('before setIsLoading state ' + clubUrl);
-  const [isLoading, setIsLoading] = React.useState<Boolean>(true);
-  //console.log('after setIsLoading state ' + clubUrl);
+  const [clubDetails, setClubDetails] = React.useState<ClubDetail>();
+  const [status, setStatus] = React.useState<ProcessingStatus>('pending');
+
+  // TODO: move to a constant file/environment file
+  const endPoint = 'http://localhost:3090/clubs/';
   React.useEffect(() => {
-    //console.log('in useeffect before setTimeout ' + clubUrl);
-    const timeout = setTimeout(() => {
-      //console.log('in setTimeout before set state club details ' + clubUrl);
-      setClubDetails([
-        {
-          clubId: 1,
-          clubName: 'woking',
-          clubAddress: 'address',
-          clubLogo: null,
-          clubUrl: 'woking',
-        },
-        {
-          clubId: 2,
-          clubName: 'knaphill fc',
-          clubAddress: 'address',
-          clubLogo: null,
-          clubUrl: 'knaphill-fc',
-        },
-      ]);
-      setIsLoading(false);
-    }, 900);
-    //console.log('in useeffect after set setTimeout ' + clubUrl);
+    // TODO: can make more generic?
+    async function fetchData() {
+      try {
+        const response = await axios.get(endPoint + clubUrl);
+        setClubDetails(response.data);
+        setStatus('loaded');
+      } catch (error) {
+        //console.dir(error.response);
+        if (error.response.status === 404) {
+          //console.log('found status is 404');
+          setStatus('notfound');
+        } else {
+          //console.log('status is >' + error.response.status + '<');
+          setStatus('error');
+        }
+      }
+    }
+    fetchData();
   }, [clubUrl]);
-  if (isLoading) {
-    //console.log('clubDetails loading ' + clubUrl);
+  if (status === 'pending') {
     return (
       <>
         <p>club details loading</p>
       </>
     );
-  } else {
-    //console.log('find club details ' + clubUrl);
-    //@ts-expect-error
-    const club = clubDetails.find(club => club.clubUrl === clubUrl);
-    if (club === undefined) {
-      //console.log('club undefined ' + clubUrl);
-      return (
-        <>
-          <p>club not found {clubUrl}</p>
-        </>
-      );
-    }
+  } else if (status === 'error') {
     return (
       <>
-        <ClubDetails {...club} />
+        <p>club details loading errored {status}</p>
+      </>
+    );
+  } else if (
+    status === 'notfound' ||
+    clubDetails === undefined ||
+    clubDetails.clubId === null
+  ) {
+    //-@ts-expect-error
+    return (
+      <>
+        <p>club not found {clubUrl}</p>
+      </>
+    );
+  } else if (status === 'loaded') {
+    return (
+      <>
+        <ClubDetails {...clubDetails} />
       </>
     );
   }
