@@ -1,12 +1,13 @@
 import * as React from 'react';
-
+import {ClubDetail} from '../../types/clubtypes';
+/* 
 export type ClubDetail = {
   clubId: number;
   clubName: string;
   clubAddress: string;
   clubLogo: string | null;
   clubUrl: string;
-};
+}; */
 
 const ClubDetails = ({
   clubId,

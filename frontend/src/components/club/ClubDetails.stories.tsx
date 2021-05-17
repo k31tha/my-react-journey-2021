@@ -1,5 +1,6 @@
 import * as React from 'react';
-import ClubDetails, {ClubDetail} from './ClubDetails';
+import {ClubDetail} from '../../types/clubtypes';
+import ClubDetails from './ClubDetails';
 import {Meta, Story} from '@storybook/react';
 export default {
   title: 'Components/Club/Club Details',

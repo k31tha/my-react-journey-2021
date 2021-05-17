@@ -13,7 +13,7 @@ export const ClubDetailsContainerStory = () => (
   <ClubDetailsContainer clubUrl={'knaphill-fc'} />
 );
 export const ClubDetailsContainerStory2 = () => (
-  <ClubDetailsContainer clubUrl={'woking'} />
+  <ClubDetailsContainer clubUrl={'woking-fc'} />
 );
 
 export const ClubDetailsContainerStory3 = () => (
