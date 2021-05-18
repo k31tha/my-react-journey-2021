@@ -16,17 +16,14 @@ const useClubDetailApi = (
     async function fetchData() {
       try {
         const response = await axios.get(endPoint + clubUrl);
-        console.log('here');
-        console.dir(response);
-        setClubDetails(response.data);
-        setStatus('loaded');
+        if (response.status === 200) {
+          setClubDetails(response.data);
+          setStatus('loaded');
+        }
       } catch (error) {
-        console.dir(error);
         if (error.response.status === 404) {
-          console.log('found status is 404');
           setStatus('notfound');
         } else {
-          //console.log('status is >' + error.response.status + '<');
           setStatus('error');
         }
       }
