@@ -49,7 +49,7 @@ describe('ClubDetails Container', () => {
     mockedAxios.get.mockImplementationOnce(() =>
       Promise.reject({response: {status: 404}}),
     );
-    //mockedAxios.get.mockRejectedValue({status: 404})unknwoking-fc-1'} />);
+    //mockedAxios.get.mockRejectedValue({status: 404})unknown-fc-1'} />);
     //await waitFor(() => screen.getByTestId('clubdetails'));
     //await waitForElementToBeRemoved(() => screen.getByText(/loading/i));
     render(<ClubDetailsContainer clubUrl={'unknown'} />);

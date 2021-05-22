@@ -12,6 +12,7 @@
     "@types/react-dom": "^17.0.0",
     "axios": "^0.21.1",
     "babel-loader": "8.1.0",
+    "jsdoc": "^3.6.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
@@ -25,7 +26,8 @@
     "test:coveragelocal": "set CI=true && react-scripts test --coverage",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "docs": "jsdoc -d docs src/app.tsx"
   },
   "eslintConfig": {
     "extends": [
@@ -63,6 +65,7 @@
     "@storybook/node-logger": "^6.2.8",
     "@storybook/preset-create-react-app": "^3.1.7",
     "@storybook/react": "^6.2.8",
+    "better-docs": "^2.3.2",
     "coveralls": "^3.1.0",
     "react-test-renderer": "^17.0.2"
   }

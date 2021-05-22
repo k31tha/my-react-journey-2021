@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {ProcessingStatusType} from '../types/nlstypes';
 import useClubDetailApi from '../hooks/useClubDetailApi';
 import ClubDetails from '../components/club/ClubDetails';
 
@@ -8,15 +9,15 @@ export type Props = {
 
 const ClubDetailsContainer = ({clubUrl}: Props): JSX.Element => {
   // Hold Club Details in State
-  const [clubDetails, status] = useClubDetailApi(clubUrl);
+  const [{clubDetail, status}] = useClubDetailApi(clubUrl);
 
-  if (status === 'pending') {
+  if (status === ProcessingStatusType.pending) {
     return (
       <>
         <p>club details loading</p>
       </>
     );
-  } else if (status === 'error') {
+  } else if (status === ProcessingStatusType.error) {
     return (
       <>
         <p>club details loading errored {status}</p>
@@ -24,9 +25,9 @@ const ClubDetailsContainer = ({clubUrl}: Props): JSX.Element => {
     );
   } // TODO: sort out undefined | null
   else if (
-    status === 'notfound' ||
-    clubDetails === undefined ||
-    clubDetails === null
+    status === ProcessingStatusType.notfound ||
+    clubDetail === undefined ||
+    clubDetail === null
   ) {
     //-@ts-expect-error
     return (
@@ -34,10 +35,10 @@ const ClubDetailsContainer = ({clubUrl}: Props): JSX.Element => {
         <p>club not found {clubUrl}</p>
       </>
     );
-  } else if (status === 'loaded') {
+  } else if (status === ProcessingStatusType.loaded) {
     return (
       <>
-        <ClubDetails {...clubDetails} />
+        <ClubDetails {...clubDetail} />
       </>
     );
   } else {

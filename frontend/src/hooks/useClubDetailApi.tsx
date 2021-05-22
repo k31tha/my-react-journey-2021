@@ -1,13 +1,27 @@
 import * as React from 'react';
 import axios from 'axios';
-import {ClubDetail} from '../types/clubtypes';
-import {ProcessingStatus} from '../types/nlstypes';
+import {
+  ClubDetail,
+  ClubDetailState,
+  ClubDetailActionType,
+} from '../types/clubtypes';
+import {ProcessingStatus, ProcessingStatusType} from '../types/nlstypes';
+import clubDetailFetchReducer from '../reducers/clubDetailFetchReducer';
 
-const useClubDetailApi = (
-  clubUrl: string,
-): [ClubDetail | null, ProcessingStatus] => {
-  const [clubDetails, setClubDetails] = React.useState<ClubDetail | null>(null);
-  const [status, setStatus] = React.useState<ProcessingStatus>('pending');
+const initialClubDetailState: ClubDetailState = {
+  clubDetail: null,
+  status: ProcessingStatusType.pending,
+};
+
+const useClubDetailApi = (clubUrl: string): [ClubDetailState] => {
+  //const [clubDetails, setClubDetails] = React.useState<ClubDetail | null>(null);
+  //const [status, setStatus] = React.useState<ProcessingStatus>(
+  //  ProcessingStatusType.pending,
+  //);
+  const [state, dispatch] = React.useReducer(
+    clubDetailFetchReducer,
+    initialClubDetailState,
+  );
 
   // TODO: move to a constant file/environment file
   const endPoint = 'http://localhost:3090/clubs/';
@@ -17,20 +31,30 @@ const useClubDetailApi = (
       try {
         const response = await axios.get(endPoint + clubUrl);
         if (response.status === 200) {
-          setClubDetails(response.data);
-          setStatus('loaded');
+          //setClubDetails(response.data);
+          //setStatus(ProcessingStatusType.loaded);
+          dispatch({
+            type: ClubDetailActionType.ClubFetchSuccess,
+            payload: response.data,
+          });
         }
       } catch (error) {
         if (error.response.status === 404) {
-          setStatus('notfound');
+          dispatch({
+            type: ClubDetailActionType.ClubFetchNotFound,
+            //payload: null,
+          });
         } else {
-          setStatus('error');
+          dispatch({
+            type: ClubDetailActionType.ClubFetchFailure,
+            //payload: null,
+          });
         }
       }
     }
     fetchData();
   }, [clubUrl]);
 
-  return [clubDetails, status];
+  return [state];
 };
 export default useClubDetailApi;
