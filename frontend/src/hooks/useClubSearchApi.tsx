@@ -5,7 +5,7 @@ import {ProcessingStatusType} from '../types/nlstypes';
 import clubSearchFetchReducer from '../reducers/clubSearchFetchReducer';
 
 const initialClubSearchState: ClubSearchState = {
-  clubs: null,
+  clubs: [],
   status: ProcessingStatusType.pending,
 };
 

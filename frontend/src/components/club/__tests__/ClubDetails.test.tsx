@@ -17,6 +17,7 @@ describe('ClubDetails', () => {
         clubLogo={null}
         clubAddress={'dummy street, dummy town, DD333MY'}
         clubUrl={'woking'}
+        clubActive={true}
       />,
     );
     const headingElement = screen.getByText(/Woking/i);
@@ -34,6 +35,7 @@ describe('ClubDetails', () => {
         clubLogo={null}
         clubUrl={'knaphill'}
         clubAddress={'dummy street, dummy town, DD333MY'}
+        clubActive={true}
       />,
     );
     const headingElement = container.querySelector('p');
@@ -48,9 +50,10 @@ describe('ClubDetails', () => {
         clubLogo={null}
         clubUrl={'knaphill'}
         clubAddress={'dummy street, dummy town, DD333MY'}
+        clubActive={true}
       />,
     );
-    screen.debug();
+    //screen.debug();
     // to avoid implementation details -- from testing course
     const newHeadingElement = screen.getByText(/club name:/i);
     expect(newHeadingElement).toHaveTextContent('Club name: Knaphill');

@@ -68,3 +68,25 @@ exports[`Storyshots Components/Club/Club Details Container Unknown Club 1`] = `
   club details loading
 </p>
 `;
+
+exports[`Storyshots Components/Club/Club Link Basic Club Link 1`] = `
+<ul>
+  <li
+    className="InActiveClub"
+  >
+    <a
+      href="club/knaphill-fc"
+    >
+      Knaphill
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`Storyshots Components/Club/Club Link List Basic Club Link List 1`] = `
+<ul>
+  <li>
+    a
+  </li>
+</ul>
+`;

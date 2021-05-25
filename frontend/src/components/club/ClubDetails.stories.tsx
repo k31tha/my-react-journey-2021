@@ -14,6 +14,7 @@ export const ClubDetailsStory = () => (
     clubLogo={null}
     clubUrl={'knaphill'}
     clubAddress={'dummy street, dummy town, DD333MY'}
+    clubActive={true}
   />
 );
 export const ClubDetailsStory2 = () => (
@@ -23,6 +24,7 @@ export const ClubDetailsStory2 = () => (
     clubLogo={null}
     clubUrl={'woking'}
     clubAddress={'dummy street, dummy town, DD333MY'}
+    clubActive={true}
   />
 );
 

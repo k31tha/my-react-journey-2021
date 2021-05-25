@@ -1,17 +1,17 @@
 import * as React from 'react';
+import {BrowserRouter as Router} from 'react-router-dom';
 import ClubDetailsContainer from './containers/ClubDetailsContainer';
 import ClubSearchContainer from './containers/ClubSearchContainer';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <ClubDetailsContainer clubUrl={'woking-fc'} />
-      <ClubSearchContainer />
-      <ClubSearchContainer>
-        <p>test children</p>
-      </ClubSearchContainer>
-    </div>
+    <Router>
+      <div className="App">
+        <ClubDetailsContainer clubUrl={'woking-fc'} />
+        <ClubSearchContainer />
+      </div>
+    </Router>
   );
 }
 //<ClubDetailsContainer clubUrl={'knaphill-fc'} />

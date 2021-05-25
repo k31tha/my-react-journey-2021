@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {ProcessingStatusType} from '../types/nlstypes';
 import useClubSearchApi from '../hooks/useClubSearchApi';
-//import ClubDetails from '../components/club/ClubDetails';
+import ClubLinkList from '../components/club/ClubLinkList';
 
 export type Props = {
   //clubUrl: string;
@@ -35,11 +35,16 @@ const ClubSearchContainer = ({children}: Props): JSX.Element => {
   //);
   //}
   //
+  //<ClubLinkList clubs={clubs} />
   else if (
     status === ProcessingStatusType.loaded ||
     status === ProcessingStatusType.notfound
   ) {
-    return <>{children}</>;
+    return (
+      <>
+        <ClubLinkList clubs={clubs} />
+      </>
+    );
   } else {
     return (
       <>

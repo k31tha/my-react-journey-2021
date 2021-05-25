@@ -6,6 +6,7 @@ export type ClubDetail = {
   clubAddress?: string;
   clubLogo?: string | null;
   clubUrl: string;
+  clubActive: boolean;
 };
 
 export enum ClubDetailActionType {
@@ -40,4 +41,14 @@ export type ClubDetailState = {
 export type ClubSearchState = {
   clubs: Array<ClubDetail> | null | undefined;
   status: ProcessingStatus;
+};
+
+export type ClubLinkType = {
+  url: string;
+  name?: string;
+  active: boolean;
+};
+
+export type ClubLinkedListPropType = {
+  clubs: Array<ClubDetail> | null | undefined;
 };

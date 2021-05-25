@@ -12,6 +12,7 @@ const wokingClubDetail: ClubDetail = {
   clubAddress: 'an address',
   clubLogo: null,
   clubUrl: 'woking-fc',
+  clubActive: true,
 };
 
 jest.mock('axios');

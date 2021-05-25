@@ -1,9 +1,4 @@
-import {
-  render,
-  screen,
-  waitForElementToBeRemoved,
-  cleanup,
-} from '@testing-library/react';
+import {render, screen, cleanup} from '@testing-library/react';
 import ClubDetailsContainer from '../ClubDetailsContainer';
 //import axiosMock from 'axios';
 import axios from 'axios';
@@ -16,6 +11,7 @@ const wokingClubDetail: ClubDetail = {
   clubAddress: 'an address',
   clubLogo: null,
   clubUrl: 'woking-fc',
+  clubActive: true,
 };
 
 jest.mock('axios');
