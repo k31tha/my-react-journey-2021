@@ -75,7 +75,8 @@ exports[`Storyshots Components/Club/Club Link Basic Club Link 1`] = `
     className="InActiveClub"
   >
     <a
-      href="club/knaphill-fc"
+      href="/club/knaphill-fc"
+      onClick={[Function]}
     >
       Knaphill
     </a>
@@ -85,8 +86,29 @@ exports[`Storyshots Components/Club/Club Link Basic Club Link 1`] = `
 
 exports[`Storyshots Components/Club/Club Link List Basic Club Link List 1`] = `
 <ul>
-  <li>
-    a
-  </li>
+  <ul
+    data-testid="search-club-list"
+  >
+    <li
+      className=""
+    >
+      <a
+        href="/club/knaphill-fc"
+        onClick={[Function]}
+      >
+        Knaphill
+      </a>
+    </li>
+    <li
+      className="InActiveClub"
+    >
+      <a
+        href="/club/sutton-utd"
+        onClick={[Function]}
+      >
+        Sutton Utd
+      </a>
+    </li>
+  </ul>
 </ul>
 `;

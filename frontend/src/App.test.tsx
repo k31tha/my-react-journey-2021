@@ -29,6 +29,6 @@ test('renders learn react link', async () => {
     status: 200,
   });
   render(<App />);
-  const linkElement = await screen.findByText(/woking/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(await screen.findByText(/woking/i)).toBeInTheDocument();
+  expect(mockedAxios.get).toHaveBeenCalledTimes(1);
 });
