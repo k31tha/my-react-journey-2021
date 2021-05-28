@@ -14,20 +14,18 @@ const ClubLinkList = ({clubs}: ClubLinkedListPropType) => {
     );
   }
   return (
-    <Router>
-      <ul data-testid="search-club-list">
-        {clubs?.map(club => (
-          <ClubLink
-            key={club.clubUrl}
-            {...{
-              url: club.clubUrl,
-              name: club.clubName,
-              active: club.clubActive,
-            }}
-          />
-        ))}
-      </ul>
-    </Router>
+    <ul data-testid="search-club-list">
+      {clubs?.map(club => (
+        <ClubLink
+          key={club.clubUrl}
+          {...{
+            url: club.clubUrl,
+            name: club.clubName,
+            active: club.clubActive,
+          }}
+        />
+      ))}
+    </ul>
   );
 };
 

@@ -9,7 +9,7 @@ import {Link} from 'react-router-dom';
 const ClubLink = ({url, name, active}: ClubLinkType): JSX.Element => {
   return (
     <li className={active ? '' : 'InActiveClub'} key={name}>
-      <Link to={'/club/' + url}>{name}</Link>
+      <Link to={'club/' + url}>{name}</Link>
     </li>
   );
 };

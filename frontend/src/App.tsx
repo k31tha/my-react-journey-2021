@@ -1,15 +1,13 @@
 import * as React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
-import ClubDetailsContainer from './containers/ClubDetailsContainer';
-import ClubSearchContainer from './containers/ClubSearchContainer';
+import {SiteRoutes} from './routes/SiteRoutes';
 import './App.css';
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <ClubDetailsContainer clubUrl={'woking-fc'} />
-        <ClubSearchContainer />
+        <SiteRoutes />
       </div>
     </Router>
   );
