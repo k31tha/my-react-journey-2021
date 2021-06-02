@@ -6,14 +6,24 @@ import axios from 'axios';
 
 import {ClubDetail} from './types/clubtypes';
 
-const wokingClubDetail: ClubDetail = {
-  clubId: -1,
-  clubName: 'Woking FC',
-  clubAddress: 'an address',
-  clubLogo: null,
-  clubUrl: 'woking-fc',
-  clubActive: true,
-};
+const wokingClubDetail: Array<ClubDetail> = [
+  {
+    clubId: -1,
+    clubName: 'Woking FC',
+    clubAddress: 'an address',
+    clubLogo: null,
+    clubUrl: 'woking-fc',
+    clubActive: true,
+  },
+  {
+    clubId: -2,
+    clubName: 'Sutton UTD',
+    clubAddress: 'an address',
+    clubLogo: null,
+    clubUrl: 'sutton-utd',
+    clubActive: false,
+  },
+];
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -23,12 +33,13 @@ beforeEach(() => {
 
 afterEach(cleanup);
 
-test('renders learn react link', async () => {
+test('app entry page', async () => {
   mockedAxios.get.mockResolvedValue({
     data: wokingClubDetail,
     status: 200,
   });
   render(<App />);
-  expect(await screen.findByText(/woking/i)).toBeInTheDocument();
+  //expect(await screen.findAllByText(/woking/i)).toBeInTheDocument();
+  expect(await screen.findAllByText(/woking/i)).toHaveLength(2);
   expect(mockedAxios.get).toHaveBeenCalledTimes(1);
 });

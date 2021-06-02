@@ -52,3 +52,9 @@ export type ClubLinkType = {
 export type ClubLinkedListPropType = {
   clubs: Array<ClubDetail> | null | undefined;
 };
+
+export type ClubSearchByNameType = {
+  nameSearch: string;
+  handleNameSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  children?: React.ReactNode;
+};

@@ -112,3 +112,29 @@ exports[`Storyshots Components/Club/Club Link List Basic Club Link List 1`] = `
   </ul>
 </ul>
 `;
+
+exports[`Storyshots Components/Routes/Site Routes Club Page 1`] = `
+<p>
+  club details loading
+</p>
+`;
+
+exports[`Storyshots Components/Routes/Site Routes Club Page Not Found 1`] = `
+<p>
+  club details loading
+</p>
+`;
+
+exports[`Storyshots Components/Routes/Site Routes Default 1`] = `
+<p>
+  club details loading
+</p>
+`;
+
+exports[`Storyshots Components/Routes/Site Routes Page Not Found 1`] = `
+<p
+  data-testid="not-found"
+>
+  Page Not Found
+</p>
+`;

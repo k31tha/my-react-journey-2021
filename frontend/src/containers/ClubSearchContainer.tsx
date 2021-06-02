@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {ProcessingStatusType} from '../types/nlstypes';
 import useClubSearchApi from '../hooks/useClubSearchApi';
-import ClubLinkList from '../components/club/ClubLinkList';
+import ClubSearch from '../components/club/ClubSearch';
 
 export type Props = {
   //clubUrl: string;
@@ -42,7 +42,7 @@ const ClubSearchContainer = ({children}: Props): JSX.Element => {
   ) {
     return (
       <>
-        <ClubLinkList clubs={clubs} />
+        <ClubSearch clubs={clubs} />
       </>
     );
   } else {

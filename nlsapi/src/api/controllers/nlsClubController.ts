@@ -49,6 +49,24 @@ const clubListData: Array<ClubDetail> = [
     clubLogo: "",
     clubAddress: "",
   },
+  {
+    clubId: 5,
+    clubName: "Sutton UTD",
+    clubUrl: "sutton-utd",
+    clubActive: false,
+    clubOfficialWebsite: "",
+    clubLogo: "",
+    clubAddress: "",
+  },
+  {
+    clubId: 6,
+    clubName: "Solihull Moors",
+    clubUrl: "solihull-moors",
+    clubActive: true,
+    clubOfficialWebsite: "",
+    clubLogo: "",
+    clubAddress: "",
+  },
 ];
 
 exports.list_all_clubs = function (req: any, res: any) {
