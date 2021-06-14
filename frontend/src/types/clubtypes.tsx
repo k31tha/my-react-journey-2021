@@ -58,3 +58,9 @@ export type ClubSearchByNameType = {
   handleNameSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
   children?: React.ReactNode;
 };
+
+export type ClubSearchByActiveFlagType = {
+  activeFlag: boolean;
+  handleActiveFlagSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  children?: React.ReactNode;
+};

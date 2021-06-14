@@ -17,5 +17,13 @@ export const filterByIndex = (clubIndex: string, club: Array<ClubDetail>) =>
   club!.filter(club =>
     club.clubName!.toLowerCase().startsWith(clubIndex.toLowerCase()),
   );
+export const filterByActiveOnly = (
+  club: Array<ClubDetail> | undefined,
+  activeOnly = false,
+) =>
+  club!.filter(club => (activeOnly === true ? club.clubActive === true : true));
+
+export const filterByClubName = (clubName: string) => (club: ClubDetail) =>
+  !clubName || club?.clubName?.toLowerCase().includes(clubName.toLowerCase());
 
 //const getClubsByIndex = (clubs: Array<ClubDetail>): clubsByIndexList => {};

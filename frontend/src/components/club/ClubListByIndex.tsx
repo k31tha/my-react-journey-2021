@@ -7,7 +7,9 @@ type clubsByIndexTypeProps = {
   clubIndex: string;
 };
 const ClubListByIndex = ({clubs, clubIndex}: clubsByIndexTypeProps): any => {
-  const filteredClubs = filterByIndex(clubIndex, clubs!);
+  const filteredClubs = filterByIndex(clubIndex, clubs!).sort((a, b) =>
+    a.clubName! >= b.clubName! ? 1 : -1,
+  );
   return filteredClubs.map(club => (
     <ClubLink
       key={club.clubUrl}

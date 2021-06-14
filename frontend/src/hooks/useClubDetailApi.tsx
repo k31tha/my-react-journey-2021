@@ -20,13 +20,15 @@ const useClubDetailApi = (clubUrl: string): [ClubDetailState] => {
   );
 
   // TODO: move to a constant file/environment file
+  // not sure re mounted
   const endPoint = 'http://localhost:3090/clubs/';
   React.useEffect(() => {
+    let mounted = true;
     // TODO: can make more generic?
     async function fetchData() {
       try {
         const response = await axios.get(endPoint + clubUrl);
-        if (response.status === 200) {
+        if (response.status === 200 && mounted === true) {
           dispatch({
             type: ClubDetailActionType.ClubFetchSuccess,
             payload: response.data,
@@ -45,6 +47,7 @@ const useClubDetailApi = (clubUrl: string): [ClubDetailState] => {
       }
     }
     fetchData();
+    //return () => (mounted = false);
   }, [clubUrl]);
 
   return [state];
