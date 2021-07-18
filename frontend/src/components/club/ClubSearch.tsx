@@ -3,13 +3,13 @@ import ClubLinkList from './ClubLinkList';
 import ClubListByIndex from './ClubListByIndex';
 import ClubSearchByName from './ClubSearchByName';
 import ClubSearchByActiveFlag from './ClubSearchByActiveFlag';
-import {ClubDetail, ClubLinkedListPropType} from '../../types/clubtypes';
+import {ClubSearchPropType} from '../../types/clubtypes';
 import {
   filterByClubName,
   filterByActiveOnly,
 } from '../../filters/club/filterClubs';
 
-const ClubSearch = ({clubs}: ClubLinkedListPropType) => {
+const ClubSearch = ({clubs, resultType}: ClubSearchPropType) => {
   const [clubNameSearch, setClubNameSearch] = React.useState('');
   const [activeClubsOnly, setActiveClubsOnly] = React.useState(false);
   const handleNameSearchChange = (ev: any) => {
@@ -25,6 +25,14 @@ const ClubSearch = ({clubs}: ClubLinkedListPropType) => {
     filteredList,
     activeClubsOnly,
   );
+
+  let resultTypeComponent;
+  if (resultType === 'List') {
+    resultTypeComponent = <ClubLinkList clubs={filteredListByStatus} />;
+  } else {
+    resultTypeComponent = <ClubListByIndex clubs={filteredListByStatus} />;
+  }
+
   return (
     <>
       <ClubSearchByName
@@ -39,8 +47,7 @@ const ClubSearch = ({clubs}: ClubLinkedListPropType) => {
       >
         {'Active Clubs Only:'}
       </ClubSearchByActiveFlag>
-      <ClubLinkList clubs={filteredListByStatus} />
-      <ClubListByIndex clubs={filteredListByStatus} />
+      {resultTypeComponent}
     </>
   );
 };

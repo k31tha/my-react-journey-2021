@@ -6,7 +6,7 @@ import clubSearchFetchReducer from '../reducers/clubSearchFetchReducer';
 
 const initialClubSearchState: ClubSearchState = {
   clubs: [],
-  status: ProcessingStatusType.pending,
+  clubStatus: ProcessingStatusType.pending,
 };
 
 const useClubSearchApi = (): [ClubSearchState] => {

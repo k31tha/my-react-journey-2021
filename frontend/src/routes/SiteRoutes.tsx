@@ -1,5 +1,6 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
+import PyramidManagerContainer from '../containers/PyramidManagerContainer';
 import ClubSearchContainer from '../containers/ClubSearchContainer';
 import ClubDetailsContainer from '../containers/ClubDetailsContainer';
 import NotFound from '../components/error/NotFound';
@@ -9,13 +10,17 @@ export function SiteRoutes() {
     <>
       <Switch>
         <Route exact={true} path="/">
-          <ClubSearchContainer />
+          <ClubSearchContainer resultType={'ByIndex'} />
         </Route>
         <Route
           path="/club/:url"
           render={routerProps => (
             <ClubDetailsContainer clubUrl={routerProps.match.params.url} />
           )}
+        />
+        <Route
+          path="/pyramidmanager"
+          render={routerProps => <PyramidManagerContainer />}
         />
         <Route path="*">
           <NotFound />

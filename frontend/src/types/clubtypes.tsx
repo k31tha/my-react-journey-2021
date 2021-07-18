@@ -9,6 +9,14 @@ export type ClubDetail = {
   clubActive: boolean;
 };
 
+export type PyramidClubDetail = {
+  ClubID: number;
+  ClubGuid: string;
+  ClubName?: string;
+  Active: boolean;
+  UrlFriendlyName: string;
+};
+
 export enum ClubDetailActionType {
   ClubFetchInit = 'CLUB_FETCH_INIT',
   ClubFetchSuccess = 'CLUB_FETCH_SUCCESS',
@@ -35,22 +43,28 @@ export type ClubSearchAction = {
 
 export type ClubDetailState = {
   clubDetail: ClubDetail | null | undefined;
-  status: ProcessingStatus;
+  clubDetailStatus: ProcessingStatus;
 };
 
 export type ClubSearchState = {
   clubs: Array<ClubDetail> | null | undefined;
-  status: ProcessingStatus;
+  clubStatus: ProcessingStatus;
 };
 
 export type ClubLinkType = {
   url: string;
   name?: string;
   active: boolean;
+  id?: number;
 };
 
 export type ClubLinkedListPropType = {
   clubs: Array<ClubDetail> | null | undefined;
+};
+
+export type ClubSearchPropType = {
+  clubs: Array<ClubDetail> | null | undefined;
+  resultType: 'List' | 'ByIndex';
 };
 
 export type ClubSearchByNameType = {

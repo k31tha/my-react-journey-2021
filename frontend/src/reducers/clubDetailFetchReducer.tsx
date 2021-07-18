@@ -11,17 +11,17 @@ const clubDetailFetchReducer = (
 ): ClubDetailState => {
   switch (action.type) {
     case ClubDetailActionType.ClubFetchInit: //'CLUB_FETCH_INIT':
-      return {...state, status: ProcessingStatusType.pending};
+      return {...state, clubDetailStatus: ProcessingStatusType.pending};
     case ClubDetailActionType.ClubFetchSuccess: //'CLUB_FETCH_SUCCESS':
       return {
         ...state,
-        status: ProcessingStatusType.loaded,
+        clubDetailStatus: ProcessingStatusType.loaded,
         clubDetail: action.payload,
       };
     case ClubDetailActionType.ClubFetchNotFound: //'CLUB_FETCH_NOTFOUND':
-      return {...state, status: ProcessingStatusType.notfound};
+      return {...state, clubDetailStatus: ProcessingStatusType.notfound};
     case ClubDetailActionType.ClubFetchFailure: // 'CLUB_FETCH_FAILURE':
-      return {...state, status: ProcessingStatusType.error};
+      return {...state, clubDetailStatus: ProcessingStatusType.error};
     default:
       return {...state};
   }

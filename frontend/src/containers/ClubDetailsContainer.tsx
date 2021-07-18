@@ -9,23 +9,23 @@ export type Props = {
 
 const ClubDetailsContainer = ({clubUrl}: Props): JSX.Element => {
   // Hold Club Details in State
-  const [{clubDetail, status}] = useClubDetailApi(clubUrl);
+  const [{clubDetail, clubDetailStatus}] = useClubDetailApi(clubUrl);
 
-  if (status === ProcessingStatusType.pending) {
+  if (clubDetailStatus === ProcessingStatusType.pending) {
     return (
       <>
         <p>club details loading</p>
       </>
     );
-  } else if (status === ProcessingStatusType.error) {
+  } else if (clubDetailStatus === ProcessingStatusType.error) {
     return (
       <>
-        <p>club details loading errored {status}</p>
+        <p>club details loading errored {clubDetailStatus}</p>
       </>
     );
   } // TODO: sort out undefined | null
   else if (
-    status === ProcessingStatusType.notfound ||
+    clubDetailStatus === ProcessingStatusType.notfound ||
     clubDetail === undefined ||
     clubDetail === null
   ) {
@@ -35,7 +35,7 @@ const ClubDetailsContainer = ({clubUrl}: Props): JSX.Element => {
         <p>club not found {clubUrl}</p>
       </>
     );
-  } else if (status === ProcessingStatusType.loaded) {
+  } else if (clubDetailStatus === ProcessingStatusType.loaded) {
     return (
       <>
         <ClubDetails {...clubDetail} />

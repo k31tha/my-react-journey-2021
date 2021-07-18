@@ -11,17 +11,17 @@ const clubSearchFetchReducer = (
 ): ClubSearchState => {
   switch (action.type) {
     case ClubSearchActionType.ClubSearchFetchInit: //'CLUB_FETCH_INIT':
-      return {...state, status: ProcessingStatusType.pending};
+      return {...state, clubStatus: ProcessingStatusType.pending};
     case ClubSearchActionType.ClubSearchFetchSuccess: //'CLUB_FETCH_SUCCESS':
       return {
         ...state,
-        status: ProcessingStatusType.loaded,
+        clubStatus: ProcessingStatusType.loaded,
         clubs: action.payload,
       };
     case ClubSearchActionType.ClubSearchFetchNotFound: //'CLUB_FETCH_NOTFOUND':
-      return {...state, status: ProcessingStatusType.notfound};
+      return {...state, clubStatus: ProcessingStatusType.notfound};
     case ClubSearchActionType.ClubSearchFetchFailure: // 'CLUB_FETCH_FAILURE':
-      return {...state, status: ProcessingStatusType.error};
+      return {...state, clubStatus: ProcessingStatusType.error};
     default:
       return {...state};
   }

@@ -10,7 +10,7 @@ import clubDetailFetchReducer from '../reducers/clubDetailFetchReducer';
 
 const initialClubDetailState: ClubDetailState = {
   clubDetail: null,
-  status: ProcessingStatusType.pending,
+  clubDetailStatus: ProcessingStatusType.pending,
 };
 
 const useClubDetailApi = (clubUrl: string): [ClubDetailState] => {

@@ -6,22 +6,23 @@ import ClubSearch from '../components/club/ClubSearch';
 export type Props = {
   //clubUrl: string;
   children?: React.ReactNode;
+  resultType: 'List' | 'ByIndex';
 };
 
-const ClubSearchContainer = ({children}: Props): JSX.Element => {
+const ClubSearchContainer = ({children, resultType}: Props): JSX.Element => {
   // Hold Club Details in State
-  const [{clubs, status}] = useClubSearchApi(); //else if ( //  status === ProcessingStatusType.notfound ||
+  const [{clubs, clubStatus}] = useClubSearchApi(); //else if ( //  status === ProcessingStatusType.notfound ||
   //const status = ProcessingStatusType.loaded; // TODO: sort out undefined | null
-  if (status === ProcessingStatusType.pending) {
+  if (clubStatus === ProcessingStatusType.pending) {
     return (
       <>
         <p>club details loading</p>
       </>
     );
-  } else if (status === ProcessingStatusType.error) {
+  } else if (clubStatus === ProcessingStatusType.error) {
     return (
       <>
-        <p>club search loading errored {status}</p>
+        <p>club search loading errored {clubStatus}</p>
       </>
     );
   } //  clubDetail === undefined ||
@@ -37,12 +38,12 @@ const ClubSearchContainer = ({children}: Props): JSX.Element => {
   //
   //<ClubLinkList clubs={clubs} />
   else if (
-    status === ProcessingStatusType.loaded ||
-    status === ProcessingStatusType.notfound
+    clubStatus === ProcessingStatusType.loaded ||
+    clubStatus === ProcessingStatusType.notfound
   ) {
     return (
       <>
-        <ClubSearch clubs={clubs} />
+        <ClubSearch clubs={clubs} resultType={resultType} />
       </>
     );
   } else {
