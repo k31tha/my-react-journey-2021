@@ -10,16 +10,16 @@ export type ClubDetail = {
 }; */
 
 const ClubDetails = ({
-  clubId,
-  clubName,
-  clubAddress,
-  clubLogo,
-  clubUrl,
+  ClubID,
+  ClubName,
+  ClubAddress,
+  ClubLogo,
+  UrlFriendlyName,
 }: ClubDetail): JSX.Element => {
   return (
     <div data-testid="clubdetail">
-      <p>Club name: {clubName}</p>
-      <p>Club address: {clubAddress}</p>
+      <p>Club name: {ClubName}</p>
+      <p>Club address: {ClubAddress}</p>
     </div>
   );
 };

@@ -6,12 +6,14 @@ import axios from 'axios';
 import {ClubDetail} from '../../types/clubtypes';
 
 const wokingClubDetail: ClubDetail = {
-  clubId: -1,
-  clubName: 'Woking FC',
-  clubAddress: 'an address',
-  clubLogo: null,
-  clubUrl: 'woking-fc',
-  clubActive: true,
+  ClubID: -1,
+  ClubName: 'Woking FC',
+  ClubAddress: 'an address',
+  ClubLogo: null,
+  UrlFriendlyName: 'woking-fc',
+  Active: true,
+  MinorClub: true,
+  DisableAutoUpdate: true,
 };
 
 jest.mock('axios');

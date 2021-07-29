@@ -16,16 +16,22 @@ const ClubLinkList = ({clubs}: ClubLinkedListPropType) => {
     <ul data-testid="search-club-list">
       {clubs?.map(club => (
         <ClubLink
-          key={club.clubUrl}
+          key={club.UrlFriendlyName!}
           {...{
-            url: club.clubUrl,
-            name: club.clubName,
-            active: club.clubActive,
+            url: club.UrlFriendlyName!,
+            name: club.ClubName,
+            active: club.Active,
           }}
         />
       ))}
     </ul>
   );
 };
+
+//url?: string | null | undefined;
+//name?: string | null;
+//active?: boolean | null;
+//id?: number | null;
+//handleChange?: any;
 
 export default ClubLinkList;

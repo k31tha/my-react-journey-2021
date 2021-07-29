@@ -1,71 +1,108 @@
 "use strict";
 
 export type ClubDetail = {
-  clubId: number;
-  clubName: string;
-  clubAddress: string;
-  clubLogo: string | null;
-  clubUrl: string;
-  clubActive: boolean;
-  clubOfficialWebsite: string;
+  ClubID: number;
+  ClubName?: string | null;
+  ClubAddress?: string | null;
+  ContactEmailAddr?: string | null;
+  ClubLogo?: string | null;
+  MainWebsite?: string | null;
+  LongLat?: string | null;
+  Source?: string | null;
+  ClubPostcode?: string | null;
+  UrlFriendlyName?: string | null;
+  PyramidId?: string | null;
+  Nicknames?: string | null;
+  Active: boolean | null;
+  ClubGuid?: string | null;
+  MinorClub: boolean;
+  DisableAutoUpdate: boolean;
+  StatusTypeId?: number | null;
 };
+
+const clubListData1: Array<ClubDetail> = [
+  {
+    ClubID: 2733,
+    ClubName: "Knaphill FC",
+    UrlFriendlyName: "knaphill-fc",
+    Active: true,
+    PyramidId: "1117",
+    MainWebsite: "http://www.pitchero.com/clubs/knaphillfootballclub/",
+    ClubAddress:
+      "Brookwood Country Park Football Ground, Redding Way, Knaphill, Woking, Surrey, GU21 2AY",
+    MinorClub: false,
+    DisableAutoUpdate: false,
+  },
+];
 
 //var mongoose = require('mongoose'),
 //  Task = mongoose.model('Tasks');
 const clubListData: Array<ClubDetail> = [
   {
-    clubId: 1,
-    clubName: "Woking FC",
-    clubUrl: "woking-fc",
-    clubActive: true,
-    clubOfficialWebsite: "https://wokingfc.co.uk/",
-    clubLogo: "WokingLogo.png",
-    clubAddress: "",
+    ClubID: 1,
+    ClubName: "Woking FC",
+    UrlFriendlyName: "woking-fc",
+    Active: true,
+    MainWebsite: "https://wokingfc.co.uk/",
+    ClubLogo: "WokingLogo.png",
+    ClubAddress: "",
+    MinorClub: false,
+    DisableAutoUpdate: false,
   },
   {
-    clubId: 2,
-    clubName: "Leyton Orient FC",
-    clubUrl: "leyton-orient-fc",
-    clubActive: false,
-    clubOfficialWebsite: "",
-    clubLogo: "",
-    clubAddress: "",
+    ClubID: 2,
+    ClubName: "Leyton Orient FC",
+    UrlFriendlyName: "leyton-orient-fc",
+    Active: false,
+    MainWebsite: "",
+    ClubLogo: "",
+    ClubAddress: "",
+    MinorClub: false,
+    DisableAutoUpdate: false,
   },
   {
-    clubId: 3,
-    clubName: "Knaphill FC",
-    clubUrl: "knaphill-fc",
-    clubActive: true,
-    clubOfficialWebsite: "https://knaphill.co.uk/",
-    clubLogo: "",
-    clubAddress: "",
+    ClubID: 3,
+    ClubName: "Knaphill FC",
+    UrlFriendlyName: "knaphill-fc",
+    Active: true,
+    MainWebsite: "https://knaphill.co.uk/",
+    ClubLogo: "",
+    ClubAddress: "",
+    MinorClub: false,
+    DisableAutoUpdate: false,
   },
   {
-    clubId: 4,
-    clubName: "Hastings UTD",
-    clubUrl: "hastings-utd",
-    clubActive: true,
-    clubOfficialWebsite: "",
-    clubLogo: "",
-    clubAddress: "",
+    ClubID: 4,
+    ClubName: "Hastings UTD",
+    UrlFriendlyName: "hastings-utd",
+    Active: true,
+    MainWebsite: "",
+    ClubLogo: "",
+    ClubAddress: "",
+    MinorClub: false,
+    DisableAutoUpdate: false,
   },
   {
-    clubId: 5,
-    clubName: "Sutton UTD",
-    clubUrl: "sutton-utd",
-    clubActive: false,
-    clubOfficialWebsite: "",
-    clubLogo: "",
-    clubAddress: "",
+    ClubID: 5,
+    ClubName: "Sutton UTD",
+    UrlFriendlyName: "sutton-utd",
+    Active: false,
+    MainWebsite: "",
+    ClubLogo: "",
+    ClubAddress: "",
+    MinorClub: false,
+    DisableAutoUpdate: false,
   },
   {
-    clubId: 6,
-    clubName: "Solihull Moors",
-    clubUrl: "solihull-moors",
-    clubActive: true,
-    clubOfficialWebsite: "",
-    clubLogo: "",
-    clubAddress: "",
+    ClubID: 6,
+    ClubName: "Solihull Moors",
+    UrlFriendlyName: "solihull-moors",
+    Active: true,
+    MainWebsite: "",
+    ClubLogo: "",
+    ClubAddress: "",
+    MinorClub: false,
+    DisableAutoUpdate: false,
   },
 ];
 
@@ -85,7 +122,7 @@ exports.find_a_club = function (req: any, res: any) {
   //  res.json(task);
   //});
   const clubRes = clubListData.find(
-    (x) => x.clubUrl.toLowerCase() === req.params.url.toLowerCase()
+    (x) => x.UrlFriendlyName!.toLowerCase() === req.params.url.toLowerCase()
   );
   if (clubRes === undefined || clubRes === null)
     //res.status(404).send("Not found").json(clubRes);

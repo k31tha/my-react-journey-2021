@@ -8,14 +8,14 @@ type clubsByIndexTypeProps = {
 };
 const ClubListByIndex = ({clubs, clubIndex}: clubsByIndexTypeProps): any => {
   const filteredClubs = filterByIndex(clubIndex, clubs!).sort((a, b) =>
-    a.clubName! >= b.clubName! ? 1 : -1,
+    a.ClubName! >= b.ClubName! ? 1 : -1,
   );
   return filteredClubs.map(club => (
     <ClubLink
-      key={club.clubUrl}
-      url={club.clubUrl}
-      name={club.clubName}
-      active={club.clubActive}
+      key={club.UrlFriendlyName}
+      url={club.UrlFriendlyName}
+      name={club.ClubName}
+      active={club.Active}
     />
   ));
 };

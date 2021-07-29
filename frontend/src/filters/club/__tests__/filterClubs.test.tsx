@@ -3,22 +3,28 @@ import {getClubIndex, filterByIndex} from '../filterClubs';
 import {ClubDetail} from '../../../types/clubtypes';
 const clubs: Array<ClubDetail> = [
   {
-    clubName: 'Knaphill',
-    clubUrl: 'knaphill-fc',
-    clubId: 1,
-    clubActive: true,
+    ClubName: 'Knaphill',
+    UrlFriendlyName: 'knaphill-fc',
+    ClubID: 1,
+    Active: true,
+    MinorClub: false,
+    DisableAutoUpdate: false,
   },
   {
-    clubName: 'Sutton Utd',
-    clubUrl: 'sutton-utd',
-    clubId: 2,
-    clubActive: false,
+    ClubName: 'Sutton Utd',
+    UrlFriendlyName: 'sutton-utd',
+    ClubID: 2,
+    Active: false,
+    MinorClub: false,
+    DisableAutoUpdate: false,
   },
   {
-    clubName: 'Solihull Moors',
-    clubUrl: 'solihull-moors',
-    clubId: 3,
-    clubActive: true,
+    ClubName: 'Solihull Moors',
+    UrlFriendlyName: 'solihull-moors',
+    ClubID: 3,
+    Active: true,
+    MinorClub: false,
+    DisableAutoUpdate: false,
   },
 ];
 describe('filterClubByIndex', () => {

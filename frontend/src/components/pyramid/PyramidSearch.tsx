@@ -95,7 +95,10 @@ const PyramidSearch = ({
         selectedPyramidId={selectedPyramidId}
         handleLeagueSelected={handleLeagueSelected}
       />
-      <PyramidClubLinkList clubs={selectPyramidClubList} />
+      <PyramidClubLinkList
+        clubs={selectPyramidClubList}
+        selectedPyramidId={selectedPyramidId}
+      />
     </>
   );
 };

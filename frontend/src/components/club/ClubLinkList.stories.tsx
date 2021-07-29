@@ -22,12 +22,21 @@ const ClubLinkListTemplate: Story<ClubLinkedListPropType> = args => (
 export const TemplatedClubLinkList = ClubLinkListTemplate.bind({});
 TemplatedClubLinkList.args = {
   clubs: [
-    {clubName: 'Knaphill', clubUrl: 'knaphill-fc', clubId: 1, clubActive: true},
     {
-      clubName: 'Sutton Utd',
-      clubUrl: 'sutton-utd',
-      clubId: 2,
-      clubActive: false,
+      ClubName: 'Knaphill',
+      UrlFriendlyName: 'knaphill-fc',
+      ClubID: 1,
+      Active: true,
+      MinorClub: false,
+      DisableAutoUpdate: false,
+    },
+    {
+      ClubName: 'Sutton Utd',
+      UrlFriendlyName: 'sutton-utd',
+      ClubID: 2,
+      Active: false,
+      MinorClub: false,
+      DisableAutoUpdate: false,
     },
   ],
 };

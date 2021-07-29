@@ -30,11 +30,14 @@ export enum PyramidDetailsActionType {
   PyramidDetailsFetchSuccess = 'PYRAMIDDETAILS_FETCH_SUCCESS',
   PyramidDetailsFetchFailure = 'PYRAMIDDETAILS_FETCH_FAILURE',
   PyramidDetailsFetchNotFound = 'PYRAMIDDETAILS_FETCH_NOTFOUND',
+  PyramidDetailsNew = 'PYRAMIDDETAILS_NEW',
+  PyramidDetailsRemoveClub = 'PYRAMIDDETAILS_REMOVE_CLUB',
 }
 
 export type PyramidDetailsAction = {
   type: PyramidDetailsActionType;
   payload?: Array<PyramidDetail> | null | undefined;
+  actionPayload?: {clubId: number; pyramidId: number} | null | undefined;
 };
 
 export type PyramidDetailsState = {
@@ -71,4 +74,5 @@ export type PyramidSearchByActiveFlagType = {
 
 export type PyramidClubLinkedListPropType = {
   clubs: Array<PyramidClubDetail> | null | undefined;
+  selectedPyramidId: number | null | undefined;
 };

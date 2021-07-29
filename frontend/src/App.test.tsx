@@ -8,20 +8,24 @@ import {ClubDetail} from './types/clubtypes';
 
 const wokingClubDetail: Array<ClubDetail> = [
   {
-    clubId: -1,
-    clubName: 'Woking FC',
-    clubAddress: 'an address',
-    clubLogo: null,
-    clubUrl: 'woking-fc',
-    clubActive: true,
+    ClubID: -1,
+    ClubName: 'Woking FC',
+    ClubAddress: 'an address',
+    ClubLogo: null,
+    UrlFriendlyName: 'woking-fc',
+    Active: true,
+    MinorClub: false,
+    DisableAutoUpdate: false,
   },
   {
-    clubId: -2,
-    clubName: 'Sutton UTD',
-    clubAddress: 'an address',
-    clubLogo: null,
-    clubUrl: 'sutton-utd',
-    clubActive: false,
+    ClubID: -2,
+    ClubName: 'Sutton UTD',
+    ClubAddress: 'an address',
+    ClubLogo: null,
+    UrlFriendlyName: 'sutton-utd',
+    Active: false,
+    MinorClub: false,
+    DisableAutoUpdate: false,
   },
 ];
 
@@ -40,6 +44,6 @@ test('app entry page', async () => {
   });
   render(<App />);
   //expect(await screen.findAllByText(/woking/i)).toBeInTheDocument();
-  expect(await screen.findAllByText(/woking/i)).toHaveLength(2);
+  expect(await screen.findAllByText(/woking/i)).toHaveLength(1);
   expect(mockedAxios.get).toHaveBeenCalledTimes(1);
 });

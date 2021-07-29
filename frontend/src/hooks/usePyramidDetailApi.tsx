@@ -8,20 +8,25 @@ import {
 import {ProcessingStatusType} from '../types/nlstypes';
 import pyramidDetailsReducer from '../reducers/pyramidDetailsReducer';
 
-const initialPyramidDetailsState: PyramidDetailsState = {
-  pyramidDetails: null,
-  pyramidDetailsStatus: ProcessingStatusType.pending,
-};
+//const initialPyramidDetailsState: PyramidDetailsState = {
+//  pyramidDetails: null,
+//  pyramidDetailsStatus: ProcessingStatusType.pending,
+//};
 
-const usePyramidDetailsApi = (): [PyramidDetailsState] => {
-  const [state, dispatch] = React.useReducer(
-    pyramidDetailsReducer,
-    initialPyramidDetailsState,
-  );
+const usePyramidDetailsApi = (
+  //state: any,
+  dispatchPyramidDetail: any,
+) => {
+  //): [PyramidDetailsState] => {
+  //  const [state, dispatch] = React.useReducer(
+  //    pyramidDetailsReducer,
+  //    initialPyramidDetailsState,
+  //  );
 
   // TODO: move to a constant file/environment file
   // not sure re mounted
-  const endPoint = 'https://localhost:44350/api/PyramidApi/GetPyramid';
+  //const endPoint = 'https://localhost:44350/api/PyramidApi/GetPyramid';
+  const endPoint = 'http://localhost:3090/api/PyramidApi/GetPyramid';
   React.useEffect(() => {
     let mounted = true;
     // TODO: can make more generic?
@@ -29,7 +34,7 @@ const usePyramidDetailsApi = (): [PyramidDetailsState] => {
       try {
         const response = await axios.get(endPoint);
         if (response.status === 200 && mounted === true) {
-          dispatch({
+          dispatchPyramidDetail({
             type: PyramidDetailsActionType.PyramidDetailsFetchSuccess,
             payload: response.data,
           });
@@ -40,7 +45,7 @@ const usePyramidDetailsApi = (): [PyramidDetailsState] => {
         //    type: PyramidDetailsActionType.PyramidDetailsFetchNotFound,
         //  });
         //} else {
-        dispatch({
+        dispatchPyramidDetail({
           type: PyramidDetailsActionType.PyramidDetailsFetchFailure,
         });
         //}
@@ -48,8 +53,8 @@ const usePyramidDetailsApi = (): [PyramidDetailsState] => {
     }
     fetchData();
     //return () => (mounted = false);
-  }, []);
+  }, [dispatchPyramidDetail]);
 
-  return [state];
+  //return [state];
 };
 export default usePyramidDetailsApi;

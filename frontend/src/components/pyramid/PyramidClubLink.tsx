@@ -10,12 +10,21 @@ const ClubPyramidClubLink = ({
   name,
   active,
   id,
+  handleChange,
 }: ClubLinkType): JSX.Element => {
   return (
     <li className={active ? '' : 'InActiveClub'} key={name} data-clubid={id}>
       <span>{name}</span>
-      <button>(-)</button>
-      <button>(-+)</button>
+      <button data-buttonid={'remove'} data-clubid={id} onClick={handleChange}>
+        (-)
+      </button>
+      <button
+        data-buttonid={'remove-alert'}
+        data-clubid={id}
+        onClick={handleChange}
+      >
+        (-+)
+      </button>
     </li>
   );
 };

@@ -1,12 +1,23 @@
 import {ProcessingStatus} from './nlstypes';
 
 export type ClubDetail = {
-  clubId: number;
-  clubName?: string;
-  clubAddress?: string;
-  clubLogo?: string | null;
-  clubUrl: string;
-  clubActive: boolean;
+  ClubID: number;
+  ClubName?: string | null;
+  ClubAddress?: string | null;
+  ContactEmailAddr?: string | null;
+  ClubLogo?: string | null;
+  MainWebsite?: string | null;
+  LongLat?: string | null;
+  Source?: string | null;
+  ClubPostcode?: string | null;
+  UrlFriendlyName?: string | null;
+  PyramidId?: string | null;
+  Nicknames?: string | null;
+  Active: boolean | null;
+  ClubGuid?: string | null;
+  MinorClub: boolean;
+  DisableAutoUpdate: boolean;
+  StatusTypeId?: number | null;
 };
 
 export type PyramidClubDetail = {
@@ -52,10 +63,11 @@ export type ClubSearchState = {
 };
 
 export type ClubLinkType = {
-  url: string;
-  name?: string;
-  active: boolean;
-  id?: number;
+  url?: string | null | undefined;
+  name?: string | null;
+  active?: boolean | null;
+  id?: number | null;
+  handleChange?: any;
 };
 
 export type ClubLinkedListPropType = {

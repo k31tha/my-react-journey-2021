@@ -31,7 +31,34 @@ const pyramidDetailsReducer = (
         ...pyramidDetailsState,
         pyramidDetailsStatus: ProcessingStatusType.error,
       };
+    case PyramidDetailsActionType.PyramidDetailsRemoveClub:
+      console.log(action.type);
+      console.log(action.actionPayload);
+      const foundPyramid = pyramidDetailsState.pyramidDetails?.filter(
+        pyramidItem =>
+          pyramidItem.pyramidId === action.actionPayload?.pyramidId,
+      )[0];
+      const newPyramidList = pyramidDetailsState.pyramidDetails?.filter(
+        pyramidItem =>
+          pyramidItem.pyramidId !== action.actionPayload?.pyramidId,
+      );
+      const newClubList = foundPyramid?.clubs!.filter(
+        clubItem => clubItem.ClubID !== action.actionPayload?.clubId,
+      );
+      foundPyramid!.clubs = newClubList;
+      newPyramidList!.push(foundPyramid!);
+      return {
+        ...pyramidDetailsState,
+        pyramidDetails: newPyramidList!,
+      };
+
+    //setListData({ ...listData, list: newList });
+    //  return {
+    //    ...pyramidDetailsState,
+    //  };
     default:
+      console.log(action.type);
+      console.log(action.actionPayload);
       return {...pyramidDetailsState};
   }
 };

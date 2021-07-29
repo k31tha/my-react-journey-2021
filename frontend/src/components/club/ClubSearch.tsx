@@ -20,7 +20,7 @@ const ClubSearch = ({clubs, resultType}: ClubSearchPropType) => {
   };
   const filteredList = clubs
     ?.filter(filterByClubName(clubNameSearch))
-    .sort((a, b) => (a.clubName! >= b.clubName! ? 1 : -1));
+    .sort((a, b) => (a.ClubName! >= b.ClubName! ? 1 : -1));
   const filteredListByStatus = filterByActiveOnly(
     filteredList,
     activeClubsOnly,
