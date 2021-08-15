@@ -1,9 +1,14 @@
 import * as React from 'react';
 import ClubLink from './ClubLink';
+import ClubLinkPyramidManager from './ClubLinkPyramidManager';
 import {ClubLinkedListPropType} from '../../types/clubtypes';
 
 //const ClubLinkList = ({clubs}) => {
-const ClubLinkList = ({clubs}: ClubLinkedListPropType) => {
+const ClubLinkList = ({
+  clubs,
+  resultContext,
+  clubDispatch,
+}: ClubLinkedListPropType) => {
   //const clubs: Array<ClubDetail> = [];
   if (clubs === undefined || clubs === null || clubs.length === 0) {
     return (
@@ -12,18 +17,30 @@ const ClubLinkList = ({clubs}: ClubLinkedListPropType) => {
       </div>
     );
   }
+
   return (
     <ul data-testid="search-club-list">
-      {clubs?.map(club => (
-        <ClubLink
-          key={club.UrlFriendlyName!}
-          {...{
-            url: club.UrlFriendlyName!,
-            name: club.ClubName,
-            active: club.Active,
-          }}
-        />
-      ))}
+      {clubs?.map(club =>
+        resultContext === 'PyramidManager' ? (
+          <ClubLinkPyramidManager
+            key={club.UrlFriendlyName!}
+            {...{
+              club: club,
+              pyramidId: club.PyramidId,
+              clubDispatch: clubDispatch,
+            }}
+          />
+        ) : (
+          <ClubLink
+            key={club.UrlFriendlyName!}
+            {...{
+              url: club.UrlFriendlyName!,
+              name: club.ClubName,
+              active: club.Active,
+            }}
+          />
+        ),
+      )}
     </ul>
   );
 };

@@ -7,6 +7,7 @@ import {
 } from '../types/clubtypes';
 import {ProcessingStatusType} from '../types/nlstypes';
 import clubDetailFetchReducer from '../reducers/clubDetailFetchReducer';
+import {clubDetailEndPoint} from '../api/apiConsts';
 
 const initialClubDetailState: ClubDetailState = {
   clubDetail: null,
@@ -21,7 +22,7 @@ const useClubDetailApi = (clubUrl: string): [ClubDetailState] => {
 
   // TODO: move to a constant file/environment file
   // not sure re mounted
-  const endPoint = 'http://localhost:3090/clubs/';
+  const endPoint = clubDetailEndPoint;
   React.useEffect(() => {
     let mounted = true;
     // TODO: can make more generic?

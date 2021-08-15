@@ -7,6 +7,7 @@ import {
 } from '../types/pyramidtypes';
 import {ProcessingStatusType} from '../types/nlstypes';
 import pyramidDetailsReducer from '../reducers/pyramidDetailsReducer';
+import {getPyramidDetails} from '../api/apiConsts';
 
 //const initialPyramidDetailsState: PyramidDetailsState = {
 //  pyramidDetails: null,
@@ -26,7 +27,7 @@ const usePyramidDetailsApi = (
   // TODO: move to a constant file/environment file
   // not sure re mounted
   //const endPoint = 'https://localhost:44350/api/PyramidApi/GetPyramid';
-  const endPoint = 'http://localhost:3090/api/PyramidApi/GetPyramid';
+  const endPoint = getPyramidDetails;
   React.useEffect(() => {
     let mounted = true;
     // TODO: can make more generic?

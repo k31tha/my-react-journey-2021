@@ -1,22 +1,30 @@
 import * as React from 'react';
 import axios from 'axios';
-import {ClubSearchState, ClubSearchActionType} from '../types/clubtypes';
+import {
+  ClubSearchState,
+  ClubSearchActionType,
+  ClubSearchAction,
+} from '../types/clubtypes';
 import {ProcessingStatusType} from '../types/nlstypes';
 import clubSearchFetchReducer from '../reducers/clubSearchFetchReducer';
+import {clubListEndPoint} from '../api/apiConsts';
 
 const initialClubSearchState: ClubSearchState = {
   clubs: [],
   clubStatus: ProcessingStatusType.pending,
 };
 
-const useClubSearchApi = (): [ClubSearchState] => {
+const useClubSearchApi = (): [
+  ClubSearchState,
+  React.Dispatch<ClubSearchAction>,
+] => {
   const [state, dispatch] = React.useReducer(
     clubSearchFetchReducer,
     initialClubSearchState,
   );
 
   // TODO: move to a constant file/environment file
-  const endPoint = 'http://localhost:3090/clubs/';
+  const endPoint = clubListEndPoint;
   React.useEffect(() => {
     // TODO: can make more generic?
     async function fetchData() {
@@ -43,6 +51,6 @@ const useClubSearchApi = (): [ClubSearchState] => {
     fetchData();
   }, []);
 
-  return [state];
+  return [state, dispatch];
 };
 export default useClubSearchApi;

@@ -8,6 +8,7 @@ import {
   PyramidDetailsState,
   PyramidDetailsActionType,
   PyramidDetailsAction,
+  ClubPyramidStatusType,
 } from '../types/pyramidtypes';
 import pyramidDetailsReducer from '../reducers/pyramidDetailsReducer';
 
@@ -23,6 +24,8 @@ export type Props = {
 const initialPyramidDetailsState: PyramidDetailsState = {
   pyramidDetails: null,
   pyramidDetailsStatus: ProcessingStatusType.pending,
+  selectedPyramidId: null,
+  clubPyramidUpdateStatus: ClubPyramidStatusType.ok,
 };
 
 export const PyramidContext = React.createContext<{
@@ -72,7 +75,10 @@ const PyramidManagerContainer = ({children}: Props): JSX.Element => {
         pyramidDetails={pyramidDetails}
         pyramidDetailsStatus={pyramidDetailsStatus}
       />
-      <ClubSearchContainer resultType={'List'} />
+      <ClubSearchContainer
+        resultType={'List'}
+        resultContext={'PyramidManager'}
+      />
     </PyramidContext.Provider>
   );
 };

@@ -26,6 +26,7 @@ export type PyramidClubDetail = {
   ClubName?: string;
   Active: boolean;
   UrlFriendlyName: string;
+  PyramidId?: string;
 };
 
 export enum ClubDetailActionType {
@@ -40,6 +41,7 @@ export enum ClubSearchActionType {
   ClubSearchFetchSuccess = 'CLUB_FETCH_SUCCESS',
   ClubSearchFetchFailure = 'CLUB_FETCH_FAILURE',
   ClubSearchFetchNotFound = 'CLUB_FETCH_NOTFOUND',
+  ClubSearchUpdatePyramid = 'CLUB_UPDATE_PYRAMID',
 }
 
 export type ClubDetailAction = {
@@ -50,6 +52,7 @@ export type ClubDetailAction = {
 export type ClubSearchAction = {
   type: ClubSearchActionType;
   payload?: Array<ClubDetail> | null | undefined;
+  updateClub?: {clubID: number; newPyramidId: string} | null | undefined;
 };
 
 export type ClubDetailState = {
@@ -68,15 +71,28 @@ export type ClubLinkType = {
   active?: boolean | null;
   id?: number | null;
   handleChange?: any;
+  pyramidId?: string | null | undefined;
+  clubDispatch?: any;
+};
+
+export type ClubPyramidLinkType = {
+  club: ClubDetail;
+  handleChange?: any;
+  pyramidId?: string | null | undefined;
+  clubDispatch?: any;
 };
 
 export type ClubLinkedListPropType = {
   clubs: Array<ClubDetail> | null | undefined;
+  resultContext?: 'Search' | 'PyramidManager' | null | undefined;
+  clubDispatch?: any;
 };
 
 export type ClubSearchPropType = {
   clubs: Array<ClubDetail> | null | undefined;
   resultType: 'List' | 'ByIndex';
+  resultContext: 'Search' | 'PyramidManager' | null | undefined;
+  dispatch: any;
 };
 
 export type ClubSearchByNameType = {

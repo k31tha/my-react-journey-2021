@@ -13,7 +13,7 @@ export default {
 const ClubLinkListTemplate: Story<ClubLinkedListPropType> = args => (
   <ul>
     <MemoryRouter>
-      <ClubLinkList clubs={args.clubs} />
+      <ClubLinkList clubs={args.clubs} resultContext={'Search'} />
     </MemoryRouter>
   </ul>
 );
@@ -39,5 +39,6 @@ TemplatedClubLinkList.args = {
       DisableAutoUpdate: false,
     },
   ],
+  resultContext: null,
 };
 TemplatedClubLinkList.storyName = 'Basic Club Link List';

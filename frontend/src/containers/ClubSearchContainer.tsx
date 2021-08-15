@@ -7,12 +7,18 @@ export type Props = {
   //clubUrl: string;
   children?: React.ReactNode;
   resultType: 'List' | 'ByIndex';
+  resultContext?: 'Search' | 'PyramidManager' | null | undefined;
 };
 
-const ClubSearchContainer = ({children, resultType}: Props): JSX.Element => {
+const ClubSearchContainer = ({
+  children,
+  resultType,
+  resultContext,
+}: Props): JSX.Element => {
   // Hold Club Details in State
-  const [{clubs, clubStatus}] = useClubSearchApi(); //else if ( //  status === ProcessingStatusType.notfound ||
+  //const [{clubs, clubStatus}] = useClubSearchApi(); //else if ( //  status === ProcessingStatusType.notfound ||
   //const status = ProcessingStatusType.loaded; // TODO: sort out undefined | null
+  const [{clubs, clubStatus}, dispatch] = useClubSearchApi();
   if (clubStatus === ProcessingStatusType.pending) {
     return (
       <>
@@ -43,7 +49,12 @@ const ClubSearchContainer = ({children, resultType}: Props): JSX.Element => {
   ) {
     return (
       <>
-        <ClubSearch clubs={clubs} resultType={resultType} />
+        <ClubSearch
+          clubs={clubs}
+          resultType={resultType}
+          resultContext={resultContext}
+          dispatch={dispatch}
+        />
       </>
     );
   } else {

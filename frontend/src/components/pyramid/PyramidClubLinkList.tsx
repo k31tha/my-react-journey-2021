@@ -6,7 +6,9 @@ import {
   //ClubDetail,
   PyramidDetailsState,
   PyramidDetailsActionType,
+  ClubPyramidStatusType,
 } from '../../types/pyramidtypes';
+import {updateClubPyramid} from '../../api/clubApi';
 
 const PyramidClubLinkList = ({
   clubs,
@@ -23,6 +25,7 @@ const PyramidClubLinkList = ({
         pyramidId: selectedPyramidId!,
       },
     });
+    updateClubPyramid(parseInt(ev.target.dataset.clubid), -1);
   };
   if (clubs === undefined || clubs === null || clubs!.length === 0) {
     return (
@@ -32,20 +35,23 @@ const PyramidClubLinkList = ({
     );
   }
   return (
-    <ul data-testid="search-club-list">
-      {clubs?.map(club => (
-        <PyramidClubLink
-          key={club.UrlFriendlyName}
-          {...{
-            url: club.UrlFriendlyName,
-            name: club.ClubName,
-            active: club.Active,
-            id: club.ClubID,
-            handleChange: handlePyramidClubSelected,
-          }}
-        />
-      ))}
-    </ul>
+    <>
+      <ul data-testid="search-club-list">
+        {clubs?.map(club => (
+          <PyramidClubLink
+            key={club.UrlFriendlyName}
+            {...{
+              url: club.UrlFriendlyName,
+              name: club.ClubName,
+              active: club.Active,
+              id: club.ClubID,
+              pyramidId: club.PyramidId,
+              handleChange: handlePyramidClubSelected,
+            }}
+          />
+        ))}
+      </ul>
+    </>
   );
 };
 

@@ -4,14 +4,20 @@ import PyramidSearchByStep from './PyramidSearchByStep';
 import PyramidSearchByName from './PyramidSearchByName';
 import PyramidClubLinkList from './PyramidClubLinkList';
 import PyramidSearchByActiveFlag from './PyramidSearchByActiveFlag';
-import {PyramidDetail} from '../../types/pyramidtypes';
+import {PyramidDetail, ClubPyramidStatusType} from '../../types/pyramidtypes';
 import {ProcessingStatus} from '../../types/nlstypes';
+import {PyramidContext} from '../../containers/PyramidManagerContainer';
 import {
   filterByStep,
   filterByPyramidName,
   filterByActiveOnly,
   filterClubsBySelectedLeague,
 } from '../../filters/pyramid/filterPyramid';
+import {
+  //ClubDetail,
+  PyramidDetailsState,
+  PyramidDetailsActionType,
+} from '../../types/pyramidtypes';
 
 type PyramidSearchProps = {
   pyramidDetails: Array<PyramidDetail> | undefined | null;
@@ -22,6 +28,7 @@ const PyramidSearch = ({
   pyramidDetails,
   pyramidDetailsStatus,
 }: PyramidSearchProps) => {
+  const context = React.useContext(PyramidContext);
   const [pyramidNameSearch, setPyramidNameSearch] = React.useState('');
   const [pyramidStepSearch, setPyramidStepSearch] = React.useState({
     pyramidstepsearch1: true,
@@ -35,6 +42,12 @@ const PyramidSearch = ({
   const [selectedPyramidId, setSelectedPyramidId] = React.useState(0);
   const handleLeagueSelected = (ev: any) => {
     setSelectedPyramidId(parseInt(ev.target.dataset.pyramidid));
+    context.dispatchPyramidDetail({
+      type: PyramidDetailsActionType.PyramidDetailsSelected,
+      actionPayload: {
+        pyramidId: parseInt(ev.target.dataset.pyramidid),
+      },
+    });
   };
   const handlePyramidStepSearchChange = (ev: any) => {
     setPyramidStepSearch({
@@ -70,6 +83,12 @@ const PyramidSearch = ({
     selectedPyramidId,
   );
 
+  let errormessage =
+    context.state.clubPyramidUpdateStatus ===
+    ClubPyramidStatusType.pyramidnotselected ? (
+      <p>no league selected</p>
+    ) : null;
+
   return (
     <>
       <PyramidSearchByName
@@ -90,6 +109,7 @@ const PyramidSearch = ({
       >
         {'Active Leagues Only:'}
       </PyramidSearchByActiveFlag>
+      {errormessage}
       <PyramidLinkList
         pyramidDetails={filteredListByStatus}
         selectedPyramidId={selectedPyramidId}

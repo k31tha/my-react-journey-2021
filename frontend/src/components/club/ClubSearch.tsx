@@ -9,7 +9,12 @@ import {
   filterByActiveOnly,
 } from '../../filters/club/filterClubs';
 
-const ClubSearch = ({clubs, resultType}: ClubSearchPropType) => {
+const ClubSearch = ({
+  clubs,
+  resultType,
+  resultContext,
+  dispatch,
+}: ClubSearchPropType) => {
   const [clubNameSearch, setClubNameSearch] = React.useState('');
   const [activeClubsOnly, setActiveClubsOnly] = React.useState(false);
   const handleNameSearchChange = (ev: any) => {
@@ -28,9 +33,17 @@ const ClubSearch = ({clubs, resultType}: ClubSearchPropType) => {
 
   let resultTypeComponent;
   if (resultType === 'List') {
-    resultTypeComponent = <ClubLinkList clubs={filteredListByStatus} />;
+    resultTypeComponent = (
+      <ClubLinkList
+        clubs={filteredListByStatus}
+        resultContext={resultContext}
+        clubDispatch={dispatch}
+      />
+    );
   } else {
-    resultTypeComponent = <ClubListByIndex clubs={filteredListByStatus} />;
+    resultTypeComponent = (
+      <ClubListByIndex clubs={filteredListByStatus} resultContext={null} />
+    );
   }
 
   return (

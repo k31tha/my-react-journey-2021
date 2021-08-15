@@ -1,6 +1,27 @@
 import {ProcessingStatus} from './nlstypes';
 import {ClubDetail, PyramidClubDetail} from './clubtypes';
 
+export enum ClubPyramidStatusType {
+  pending = 'pending',
+  complete = 'complete',
+  loaded = 'loaded',
+  error = 'error',
+  warning = 'warning',
+  notfound = 'notfound',
+  pyramidnotselected = 'pyramidnotselected',
+  ok = 'ok',
+}
+
+export type ClubPyramidUpdateStatus =
+  | ClubPyramidStatusType.pending
+  | ClubPyramidStatusType.complete
+  | ClubPyramidStatusType.loaded
+  | ClubPyramidStatusType.error
+  | ClubPyramidStatusType.warning
+  | ClubPyramidStatusType.notfound
+  | ClubPyramidStatusType.pyramidnotselected
+  | ClubPyramidStatusType.ok;
+
 export type PyramidLinkProps = {
   clubs: Array<PyramidClubDetail> | undefined;
   pyramidId: number;
@@ -32,17 +53,31 @@ export enum PyramidDetailsActionType {
   PyramidDetailsFetchNotFound = 'PYRAMIDDETAILS_FETCH_NOTFOUND',
   PyramidDetailsNew = 'PYRAMIDDETAILS_NEW',
   PyramidDetailsRemoveClub = 'PYRAMIDDETAILS_REMOVE_CLUB',
+  PyramidDetailsAddClub = 'PYRAMIDDETAILS_ADD_CLUB',
+  PyramidDetailsSelected = 'PYRAMIDDETAILS_SELECTED',
+  PyramidDetailsNotSelected = 'PYRAMIDDETAILS_NOT_SELECTED',
+  PyramidDetailsAddClubFailure = 'PYRAMIDDETAILS_ADD_CLUB_FAILURE',
 }
 
 export type PyramidDetailsAction = {
   type: PyramidDetailsActionType;
   payload?: Array<PyramidDetail> | null | undefined;
-  actionPayload?: {clubId: number; pyramidId: number} | null | undefined;
+  actionPayload?:
+    | {
+        clubId?: number | null | undefined;
+        pyramidId: number;
+        newPyramidId?: number;
+        club?: ClubDetail;
+      }
+    | null
+    | undefined;
 };
 
 export type PyramidDetailsState = {
   pyramidDetails: Array<PyramidDetail> | null | undefined;
   pyramidDetailsStatus: ProcessingStatus;
+  selectedPyramidId: number | null | undefined;
+  clubPyramidUpdateStatus?: ClubPyramidUpdateStatus | null;
 };
 
 export type PyramidSearchByStepType = {
