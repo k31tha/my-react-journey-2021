@@ -5,6 +5,7 @@ import PyramidSearchByName from './PyramidSearchByName';
 import PyramidClubLinkList from './PyramidClubLinkList';
 import PyramidSearchByActiveFlag from './PyramidSearchByActiveFlag';
 import {PyramidDetail, ClubPyramidStatusType} from '../../types/pyramidtypes';
+import {ClubSearchAction} from '../../types/clubtypes';
 import {ProcessingStatus} from '../../types/nlstypes';
 import {PyramidContext} from '../../containers/PyramidManagerContainer';
 import {
@@ -22,11 +23,13 @@ import {
 type PyramidSearchProps = {
   pyramidDetails: Array<PyramidDetail> | undefined | null;
   pyramidDetailsStatus: ProcessingStatus;
+  clubSearchDispatch: React.Dispatch<ClubSearchAction>;
 };
 
 const PyramidSearch = ({
   pyramidDetails,
   pyramidDetailsStatus,
+  clubSearchDispatch,
 }: PyramidSearchProps) => {
   const context = React.useContext(PyramidContext);
   const [pyramidNameSearch, setPyramidNameSearch] = React.useState('');
@@ -118,6 +121,7 @@ const PyramidSearch = ({
       <PyramidClubLinkList
         clubs={selectPyramidClubList}
         selectedPyramidId={selectedPyramidId}
+        clubSearchDispatch={clubSearchDispatch}
       />
     </>
   );

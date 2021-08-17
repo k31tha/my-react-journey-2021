@@ -1,8 +1,9 @@
 import * as React from 'react';
 import {ProcessingStatusType} from '../types/nlstypes';
-import ClubSearchContainer from '../containers/ClubSearchContainer';
+import PyramidManagerClubSearchContainer from '../containers/PyramidManagerClubSearchContainer';
 import PyramidSearch from '../components/pyramid/PyramidSearch';
 import usePyramidDetailApi from '../hooks/usePyramidDetailApi';
+import useClubSearchApi from '../hooks/useClubSearchApi';
 import {
   //ClubDetail,
   PyramidDetailsState,
@@ -54,6 +55,9 @@ const PyramidManagerContainer = ({children}: Props): JSX.Element => {
 
   const {pyramidDetails, pyramidDetailsStatus} = state;
 
+  //
+  const [{clubs, clubStatus}, clubSearchDispatch] = useClubSearchApi();
+
   if (pyramidDetailsStatus === ProcessingStatusType.pending) {
     return (
       <>
@@ -74,10 +78,13 @@ const PyramidManagerContainer = ({children}: Props): JSX.Element => {
       <PyramidSearch
         pyramidDetails={pyramidDetails}
         pyramidDetailsStatus={pyramidDetailsStatus}
+        clubSearchDispatch={clubSearchDispatch}
       />
-      <ClubSearchContainer
+      <PyramidManagerClubSearchContainer
         resultType={'List'}
         resultContext={'PyramidManager'}
+        clubSearchState={{clubs, clubStatus}}
+        clubSearchDispatch={clubSearchDispatch}
       />
     </PyramidContext.Provider>
   );

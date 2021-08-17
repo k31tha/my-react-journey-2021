@@ -1,5 +1,5 @@
 import {ProcessingStatus} from './nlstypes';
-import {ClubDetail, PyramidClubDetail} from './clubtypes';
+import {ClubDetail, ClubSearchAction, PyramidClubDetail} from './clubtypes';
 
 export enum ClubPyramidStatusType {
   pending = 'pending',
@@ -110,4 +110,5 @@ export type PyramidSearchByActiveFlagType = {
 export type PyramidClubLinkedListPropType = {
   clubs: Array<PyramidClubDetail> | null | undefined;
   selectedPyramidId: number | null | undefined;
+  clubSearchDispatch: React.Dispatch<ClubSearchAction>;
 };

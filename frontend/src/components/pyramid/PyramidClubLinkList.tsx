@@ -9,10 +9,12 @@ import {
   ClubPyramidStatusType,
 } from '../../types/pyramidtypes';
 import {updateClubPyramid} from '../../api/clubApi';
+import {ClubPyramidLinkType, ClubSearchActionType} from '../../types/clubtypes';
 
 const PyramidClubLinkList = ({
   clubs,
   selectedPyramidId,
+  clubSearchDispatch,
 }: PyramidClubLinkedListPropType) => {
   const context = React.useContext(PyramidContext);
   const handlePyramidClubSelected = (ev: any) => {
@@ -23,6 +25,13 @@ const PyramidClubLinkList = ({
       actionPayload: {
         clubId: parseInt(ev.target.dataset.clubid),
         pyramidId: selectedPyramidId!,
+      },
+    });
+    clubSearchDispatch({
+      type: ClubSearchActionType.ClubSearchUpdatePyramid,
+      updateClub: {
+        clubID: parseInt(ev.target.dataset.clubid),
+        newPyramidId: '-1',
       },
     });
     updateClubPyramid(parseInt(ev.target.dataset.clubid), -1);
@@ -37,19 +46,21 @@ const PyramidClubLinkList = ({
   return (
     <>
       <ul data-testid="search-club-list">
-        {clubs?.map(club => (
-          <PyramidClubLink
-            key={club.UrlFriendlyName}
-            {...{
-              url: club.UrlFriendlyName,
-              name: club.ClubName,
-              active: club.Active,
-              id: club.ClubID,
-              pyramidId: club.PyramidId,
-              handleChange: handlePyramidClubSelected,
-            }}
-          />
-        ))}
+        {clubs
+          ?.sort((a, b) => (a.ClubName! >= b.ClubName! ? 1 : -1))
+          .map(club => (
+            <PyramidClubLink
+              key={club.UrlFriendlyName}
+              {...{
+                url: club.UrlFriendlyName,
+                name: club.ClubName,
+                active: club.Active,
+                id: club.ClubID,
+                pyramidId: club.PyramidId,
+                handleChange: handlePyramidClubSelected,
+              }}
+            />
+          ))}
       </ul>
     </>
   );
