@@ -10,6 +10,9 @@ import {
 } from '../../types/pyramidtypes';
 import {updateClubPyramid} from '../../api/clubApi';
 import {ClubPyramidLinkType, ClubSearchActionType} from '../../types/clubtypes';
+import ListItem from '@material-ui/core/ListItem';
+import List from '@material-ui/core/List';
+import Grid from '@material-ui/core/Grid';
 
 const PyramidClubLinkList = ({
   clubs,
@@ -45,7 +48,12 @@ const PyramidClubLinkList = ({
   }
   return (
     <>
-      <ul data-testid="search-club-list">
+      <Grid
+        container
+        data-testid="search-club-list"
+        component="ul"
+        direction="column"
+      >
         {clubs
           ?.sort((a, b) => (a.ClubName! >= b.ClubName! ? 1 : -1))
           .map(club => (
@@ -61,7 +69,7 @@ const PyramidClubLinkList = ({
               }}
             />
           ))}
-      </ul>
+      </Grid>
     </>
   );
 };

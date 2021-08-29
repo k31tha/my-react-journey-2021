@@ -2,6 +2,8 @@ import * as React from 'react';
 import ClubLink from './ClubLink';
 import ClubLinkPyramidManager from './ClubLinkPyramidManager';
 import {ClubLinkedListPropType} from '../../types/clubtypes';
+import List from '@material-ui/core/List';
+import Grid from '@material-ui/core/Grid';
 
 //const ClubLinkList = ({clubs}) => {
 const ClubLinkList = ({
@@ -19,7 +21,7 @@ const ClubLinkList = ({
   }
 
   return (
-    <ul data-testid="search-club-list">
+    <Grid container component="ul" data-testid="search-club-list">
       {clubs?.map(club =>
         resultContext === 'PyramidManager' ? (
           <ClubLinkPyramidManager
@@ -41,7 +43,7 @@ const ClubLinkList = ({
           />
         ),
       )}
-    </ul>
+    </Grid>
   );
 };
 

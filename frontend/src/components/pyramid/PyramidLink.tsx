@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {PyramidLinkProps} from '../../types/pyramidtypes';
+import Grid from '@material-ui/core/Grid';
 //import {Link} from 'react-router-dom';
 
 //<Link to={'club/'+url}>
@@ -16,16 +17,20 @@ const PyramidLink = ({
   handleLeagueSelected,
 }: PyramidLinkProps): JSX.Element => {
   return (
-    <li
+    <Grid
+      component="li"
+      item
+      xs={12}
       className={!pyramidStepInactive ? '' : 'InActiveLeague'}
       key={pyramidId}
       data-pyramidid={pyramidId}
+      // @ts-expect-error
       onClick={e => handleLeagueSelected(e)}
     >
       {leagueName} ({clubs?.length}) (Step {pyramidStep}){' '}
       {!pyramidStepInactive ? '' : '(InActive)'}
       {leagueSelected ? '(Selected)' : ''}
-    </li>
+    </Grid>
   );
 };
 

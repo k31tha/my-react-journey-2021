@@ -12,6 +12,8 @@ import {
   ClubPyramidStatusType,
 } from '../types/pyramidtypes';
 import pyramidDetailsReducer from '../reducers/pyramidDetailsReducer';
+import Grid from '@material-ui/core/Grid';
+import {Typography} from '@material-ui/core';
 
 //import useClubSearchApi from '../hooks/useClubSearchApi';
 //import ClubSearch from '../components/club/ClubSearch';
@@ -74,18 +76,26 @@ const PyramidManagerContainer = ({children}: Props): JSX.Element => {
 
   return (
     <PyramidContext.Provider value={contextProviderValue}>
-      <p>Pyramid</p>
-      <PyramidSearch
-        pyramidDetails={pyramidDetails}
-        pyramidDetailsStatus={pyramidDetailsStatus}
-        clubSearchDispatch={clubSearchDispatch}
-      />
-      <PyramidManagerClubSearchContainer
-        resultType={'List'}
-        resultContext={'PyramidManager'}
-        clubSearchState={{clubs, clubStatus}}
-        clubSearchDispatch={clubSearchDispatch}
-      />
+      <Grid container>
+        <Grid item xs={12}>
+          <Typography variant="body1">Pyramid</Typography>
+        </Grid>
+        <Grid item xs={6}>
+          <PyramidSearch
+            pyramidDetails={pyramidDetails}
+            pyramidDetailsStatus={pyramidDetailsStatus}
+            clubSearchDispatch={clubSearchDispatch}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <PyramidManagerClubSearchContainer
+            resultType={'List'}
+            resultContext={'PyramidManager'}
+            clubSearchState={{clubs, clubStatus}}
+            clubSearchDispatch={clubSearchDispatch}
+          />
+        </Grid>
+      </Grid>
     </PyramidContext.Provider>
   );
 };

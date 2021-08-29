@@ -19,6 +19,7 @@ import {
   PyramidDetailsState,
   PyramidDetailsActionType,
 } from '../../types/pyramidtypes';
+import Grid from '@material-ui/core/Grid';
 
 type PyramidSearchProps = {
   pyramidDetails: Array<PyramidDetail> | undefined | null;
@@ -93,37 +94,51 @@ const PyramidSearch = ({
     ) : null;
 
   return (
-    <>
-      <PyramidSearchByName
-        nameSearch={pyramidNameSearch}
-        handleNameSearch={handleNameSearchChange}
-      >
-        {'Search by:'}
-      </PyramidSearchByName>
-      <PyramidSearchByStep
-        pyramidStepSearch={pyramidStepSearch}
-        handlePyramidStepSearchChange={handlePyramidStepSearchChange}
-      >
-        {'Include Step:'}
-      </PyramidSearchByStep>
-      <PyramidSearchByActiveFlag
-        activeFlag={activeLeaguesOnly}
-        handleActiveFlagSearch={handleActiveLeaguesOnlyFlagChange}
-      >
-        {'Active Leagues Only:'}
-      </PyramidSearchByActiveFlag>
-      {errormessage}
-      <PyramidLinkList
-        pyramidDetails={filteredListByStatus}
-        selectedPyramidId={selectedPyramidId}
-        handleLeagueSelected={handleLeagueSelected}
-      />
-      <PyramidClubLinkList
-        clubs={selectPyramidClubList}
-        selectedPyramidId={selectedPyramidId}
-        clubSearchDispatch={clubSearchDispatch}
-      />
-    </>
+    <Grid container>
+      <Grid item xs={6}>
+        <Grid container direction="column">
+          <Grid item xs={12}>
+            <PyramidSearchByName
+              nameSearch={pyramidNameSearch}
+              handleNameSearch={handleNameSearchChange}
+            >
+              {'Search by:'}
+            </PyramidSearchByName>
+          </Grid>
+          <Grid item xs={12}>
+            <PyramidSearchByStep
+              pyramidStepSearch={pyramidStepSearch}
+              handlePyramidStepSearchChange={handlePyramidStepSearchChange}
+            >
+              {'Include Step:'}
+            </PyramidSearchByStep>
+          </Grid>
+          <Grid item xs={12}>
+            <PyramidSearchByActiveFlag
+              activeFlag={activeLeaguesOnly}
+              handleActiveFlagSearch={handleActiveLeaguesOnlyFlagChange}
+            >
+              {'Active Leagues Only:'}
+            </PyramidSearchByActiveFlag>
+          </Grid>
+          <Grid item xs={12}>
+            {errormessage}
+            <PyramidLinkList
+              pyramidDetails={filteredListByStatus}
+              selectedPyramidId={selectedPyramidId}
+              handleLeagueSelected={handleLeagueSelected}
+            />
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item xs={6}>
+        <PyramidClubLinkList
+          clubs={selectPyramidClubList}
+          selectedPyramidId={selectedPyramidId}
+          clubSearchDispatch={clubSearchDispatch}
+        />
+      </Grid>
+    </Grid>
   );
 };
 

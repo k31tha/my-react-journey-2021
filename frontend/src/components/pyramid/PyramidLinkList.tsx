@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {PyramidDetails} from '../../types/pyramidtypes';
 import PyramidLink from './PyramidLink';
+import Grid from '@material-ui/core/Grid';
 
 const PyramidLinkList = ({
   pyramidDetails,
@@ -23,7 +24,7 @@ const PyramidLinkList = ({
     );
   }
   return (
-    <ul data-testid="search-pyramid-list">
+    <Grid container data-testid="search-pyramid-list">
       {pyramidDetails?.map(pyramid => (
         <PyramidLink
           key={pyramid.pyramidId}
@@ -38,7 +39,7 @@ const PyramidLinkList = ({
           }}
         />
       ))}
-    </ul>
+    </Grid>
   );
 };
 

@@ -7,6 +7,9 @@ import {
   PyramidDetailsActionType,
 } from '../../types/pyramidtypes';
 import {updateClubPyramid} from '../../api/clubApi';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Grid from '@material-ui/core/Grid';
 
 //<Link to={'club/'+url}>
 //            {name}
@@ -61,7 +64,13 @@ const ClubLinkPyramidManager = ({
   };
   // pyramidId: selectedPyramidId!,
   return (
-    <li className={club.Active ? '' : 'InActiveClub'} key={club.ClubName}>
+    <Grid
+      component="li"
+      item
+      xs={12}
+      className={club.Active ? '' : 'InActiveClub'}
+      key={club.ClubName}
+    >
       {club.ClubName} ({pyramidId === '' ? 'N' : pyramidId}){' '}
       <button
         data-buttonid={'add'}
@@ -72,7 +81,7 @@ const ClubLinkPyramidManager = ({
       >
         (+)
       </button>
-    </li>
+    </Grid>
   );
 };
 

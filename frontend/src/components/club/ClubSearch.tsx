@@ -8,6 +8,7 @@ import {
   filterByClubName,
   filterByActiveOnly,
 } from '../../filters/club/filterClubs';
+import Grid from '@material-ui/core/Grid';
 
 const ClubSearch = ({
   clubs,
@@ -60,7 +61,7 @@ const ClubSearch = ({
       >
         {'Active Clubs Only:'}
       </ClubSearchByActiveFlag>
-      {resultTypeComponent}
+      <Grid container>{resultTypeComponent}</Grid>
     </>
   );
 };
