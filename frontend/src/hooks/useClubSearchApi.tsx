@@ -49,7 +49,7 @@ const useClubSearchApi = (): [
       }
     }
     fetchData();
-  }, []);
+  }, [endPoint]);
 
   return [state, dispatch];
 };

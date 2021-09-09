@@ -9,3 +9,4 @@ export const clubDetailEndPoint = nlsdomain + '/api/v2/ClubApi/ClubDetail/';
 export const getPyramidDetails = nlsdomain + '/api/PyramidApi/GetPyramid';
 export const updateClubPyramidApi =
   nlsdomain + '/api/ClubApi/UpdateClubPyramid';
+export const addClubApi = nlsdomain + '/api/v2/ClubApi/AddClub';

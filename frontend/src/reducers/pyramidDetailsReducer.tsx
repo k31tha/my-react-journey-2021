@@ -14,7 +14,7 @@ const pyramidRemoveClub = (
   pyramidId: number,
   clubId: number,
 ): Array<PyramidDetail> => {
-  console.log('pyramidRemoveClub fired for club ' + clubId.toString());
+  //console.log('pyramidRemoveClub fired for club ' + clubId.toString());
   let foundPyramid = cloneDeep(
     pyramidDetails?.filter(
       pyramidItem => pyramidItem.pyramidId === pyramidId,
@@ -134,8 +134,8 @@ const pyramidDetailsReducer = (
         pyramidDetails: newPyramidList!,
       };
     case PyramidDetailsActionType.PyramidDetailsAddClub:
-      console.log(action.type);
-      console.log(action.actionPayload);
+      //console.log(action.type);
+      //console.log(action.actionPayload);
       let addClubToPyramid = pyramidAddClub(
         pyramidDetailsState.pyramidDetails!,
         action.actionPayload!.newPyramidId!,
@@ -171,8 +171,8 @@ const pyramidDetailsReducer = (
     //    ...pyramidDetailsState,
     //  };
     default:
-      console.log(action.type);
-      console.log(action.actionPayload);
+      //console.log(action.type);
+      //console.log(action.actionPayload);
       return {...pyramidDetailsState};
   }
 };

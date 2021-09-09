@@ -1,4 +1,4 @@
-import {ProcessingStatus} from './nlstypes';
+import {ProcessingStatus, FluentApiErrors} from './nlstypes';
 
 export type ClubDetail = {
   ClubID: number;
@@ -19,6 +19,8 @@ export type ClubDetail = {
   DisableAutoUpdate: boolean;
   StatusTypeId?: number | null;
 };
+
+export type ClubDetailApi = ClubDetail & FluentApiErrors;
 
 export type PyramidClubDetail = {
   ClubID: number;
@@ -42,6 +44,7 @@ export enum ClubSearchActionType {
   ClubSearchFetchFailure = 'CLUB_FETCH_FAILURE',
   ClubSearchFetchNotFound = 'CLUB_FETCH_NOTFOUND',
   ClubSearchUpdatePyramid = 'CLUB_UPDATE_PYRAMID',
+  ClubAdd = 'CLUB_ADD',
 }
 
 export type ClubDetailAction = {
@@ -53,6 +56,7 @@ export type ClubSearchAction = {
   type: ClubSearchActionType;
   payload?: Array<ClubDetail> | null | undefined;
   updateClub?: {clubID: number; newPyramidId: string} | null | undefined;
+  clubDetail?: ClubDetail | null | undefined;
 };
 
 export type ClubDetailState = {

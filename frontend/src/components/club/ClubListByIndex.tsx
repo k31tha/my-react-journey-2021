@@ -1,11 +1,9 @@
 import ClubLink from './ClubLink';
 import {ClubLinkedListPropType, ClubDetail} from '../../types/clubtypes';
 import {getClubIndex, filterByIndex} from '../../filters/club/filterClubs';
-import List from '@material-ui/core/List';
 import Grid from '@material-ui/core/Grid';
-import ListItem from '@material-ui/core/ListItem';
 import Typography from '@material-ui/core/Typography';
-import {createStyles, Theme, makeStyles} from '@material-ui/core/styles';
+import {Link} from 'react-router-dom';
 
 type clubsByIndexTypeProps = {
   clubs: Array<ClubDetail>;
@@ -31,7 +29,7 @@ const ClubLinkListByIndex = ({clubs}: ClubLinkedListPropType): any => {
   if (clubs === undefined || clubs === null || clubs.length === 0) {
     return (
       <div data-testid="empty-club-list" className="list-items">
-        empty list
+        no club found <Link to={'/club/add'}>add club</Link>
       </div>
     );
   }
@@ -41,7 +39,6 @@ const ClubLinkListByIndex = ({clubs}: ClubLinkedListPropType): any => {
       component="ul"
       direction="column"
       wrap="wrap"
-      alignContent="space-around"
       data-testid="club-by-index"
       className=""
     >

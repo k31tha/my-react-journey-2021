@@ -14,3 +14,12 @@ export type ProcessingStatus =
   | ProcessingStatusType.error
   | ProcessingStatusType.warning
   | ProcessingStatusType.notfound;
+
+export type ApiError = {
+  PropertyName: string;
+  ErrorMessage: string;
+};
+
+export type FluentApiErrors = {
+  fluentErrors: Array<ApiError>;
+};

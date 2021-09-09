@@ -1,14 +1,8 @@
 import * as React from 'react';
 import {ClubPyramidLinkType, ClubSearchActionType} from '../../types/clubtypes';
 import {PyramidContext} from '../../containers/PyramidManagerContainer';
-import {
-  //ClubDetail,
-  PyramidDetailsState,
-  PyramidDetailsActionType,
-} from '../../types/pyramidtypes';
+import {PyramidDetailsActionType} from '../../types/pyramidtypes';
 import {updateClubPyramid} from '../../api/clubApi';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import Grid from '@material-ui/core/Grid';
 
 //<Link to={'club/'+url}>

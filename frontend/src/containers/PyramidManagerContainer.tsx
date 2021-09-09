@@ -7,7 +7,6 @@ import useClubSearchApi from '../hooks/useClubSearchApi';
 import {
   //ClubDetail,
   PyramidDetailsState,
-  PyramidDetailsActionType,
   PyramidDetailsAction,
   ClubPyramidStatusType,
 } from '../types/pyramidtypes';

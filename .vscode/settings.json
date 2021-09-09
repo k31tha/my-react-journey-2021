@@ -1,19 +1,28 @@
 {
-    "eslint.packageManager": "yarn",
-    "eslint.workingDirectories": [
-        { "mode": "auto" }
-    ],
-    "cSpell.words": [
-        "arrow",
-        "clubdetail",
-        "clubdetails",
-        "clubtypes",
-        "errored",
-        "lcov",
-        "nlsapi",
-        "nlstypes",
-        "parens",
-        "pyramidtypes",
-        "testid"
-    ]
+  "eslint.packageManager": "yarn",
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "cSpell.words": [
+    "Consts",
+    "arrow",
+    "buttonid",
+    "clubadd",
+    "clubdetail",
+    "clubdetails",
+    "clubid",
+    "clubtypes",
+    "errored",
+    "lcov",
+    "logoname",
+    "nlsapi",
+    "nlsdomain",
+    "nlstypes",
+    "oldpyramidid",
+    "parens",
+    "pyramidnotselected",
+    "pyramidstepsearch",
+    "pyramidtypes",
+    "selectedpyramidid",
+    "testid",
+    "unknownclub"
+  ]
 }

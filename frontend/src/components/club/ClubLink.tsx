@@ -1,9 +1,6 @@
-import * as React from 'react';
 import {ClubLinkType} from '../../types/clubtypes';
 import {Link} from 'react-router-dom';
-import ListItem from '@material-ui/core/ListItem';
 import Grid from '@material-ui/core/Grid';
-import {createStyles, Theme, makeStyles} from '@material-ui/core/styles';
 
 //<Link to={'club/'+url}>
 //            {name}

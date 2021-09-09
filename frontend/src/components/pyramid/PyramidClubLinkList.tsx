@@ -2,16 +2,9 @@ import * as React from 'react';
 import {PyramidClubLinkedListPropType} from '../../types/pyramidtypes';
 import PyramidClubLink from './PyramidClubLink';
 import {PyramidContext} from '../../containers/PyramidManagerContainer';
-import {
-  //ClubDetail,
-  PyramidDetailsState,
-  PyramidDetailsActionType,
-  ClubPyramidStatusType,
-} from '../../types/pyramidtypes';
+import {PyramidDetailsActionType} from '../../types/pyramidtypes';
 import {updateClubPyramid} from '../../api/clubApi';
-import {ClubPyramidLinkType, ClubSearchActionType} from '../../types/clubtypes';
-import ListItem from '@material-ui/core/ListItem';
-import List from '@material-ui/core/List';
+import {ClubSearchActionType} from '../../types/clubtypes';
 import Grid from '@material-ui/core/Grid';
 
 const PyramidClubLinkList = ({

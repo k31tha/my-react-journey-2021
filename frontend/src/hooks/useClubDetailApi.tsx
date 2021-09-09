@@ -49,7 +49,7 @@ const useClubDetailApi = (clubUrl: string): [ClubDetailState] => {
     }
     fetchData();
     //return () => (mounted = false);
-  }, [clubUrl]);
+  }, [clubUrl, endPoint]);
 
   return [state];
 };
