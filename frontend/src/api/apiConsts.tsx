@@ -10,3 +10,5 @@ export const getPyramidDetails = nlsdomain + '/api/PyramidApi/GetPyramid';
 export const updateClubPyramidApi =
   nlsdomain + '/api/ClubApi/UpdateClubPyramid';
 export const addClubApi = nlsdomain + '/api/v2/ClubApi/AddClub';
+export const addClubBasicSocialApi =
+  nlsdomain + '/api/v2/ClubApi/AddClubBasicSocial';

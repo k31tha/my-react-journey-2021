@@ -22,6 +22,16 @@ export type ClubDetail = {
 
 export type ClubDetailApi = ClubDetail & FluentApiErrors;
 
+export type ClubBasicSocialDetail = {
+  ClubGuid: string;
+  Wikipedia: string;
+  Twitter: string;
+  Facebook: string;
+  Instagram: string;
+};
+
+export type ClubBasicSocialDetailApi = ClubBasicSocialDetail & FluentApiErrors;
+
 export type PyramidClubDetail = {
   ClubID: number;
   ClubGuid: string;

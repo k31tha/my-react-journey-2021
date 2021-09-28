@@ -4,6 +4,7 @@ import PyramidManagerContainer from '../containers/PyramidManagerContainer';
 import ClubSearchContainer from '../containers/ClubSearchContainer';
 import ClubDetailsContainer from '../containers/ClubDetailsContainer';
 import ClubAdd from '../components/club/ClubAdd';
+import ClubBasicSocialAdd from '../components/club/ClubBasicSocialAdd';
 import NotFound from '../components/error/NotFound';
 
 export function SiteRoutes() {
@@ -17,6 +18,13 @@ export function SiteRoutes() {
           exact={true}
           path="/club/add"
           render={routerProps => <ClubAdd />}
+        />
+        <Route
+          exact={true}
+          path="/club/socialbasic/add/:clubGuid"
+          render={routerProps => (
+            <ClubBasicSocialAdd clubGuid={routerProps.match.params.clubGuid} />
+          )}
         />
         <Route path="/club/add/:url" render={routerProps => <ClubAdd />} />
         <Route

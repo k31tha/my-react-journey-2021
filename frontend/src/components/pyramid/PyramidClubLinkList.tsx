@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {PyramidClubLinkedListPropType} from '../../types/pyramidtypes';
 import PyramidClubLink from './PyramidClubLink';
-import {PyramidContext} from '../../containers/PyramidManagerContainer';
+import {PyramidContext} from '../../App';
 import {PyramidDetailsActionType} from '../../types/pyramidtypes';
 import {updateClubPyramid} from '../../api/clubApi';
 import {ClubSearchActionType} from '../../types/clubtypes';

@@ -13,6 +13,7 @@ import {
 import pyramidDetailsReducer from '../reducers/pyramidDetailsReducer';
 import Grid from '@material-ui/core/Grid';
 import {Typography} from '@material-ui/core';
+import {PyramidContext} from '../App';
 
 //import useClubSearchApi from '../hooks/useClubSearchApi';
 //import ClubSearch from '../components/club/ClubSearch';
@@ -22,7 +23,7 @@ export type Props = {
   children?: React.ReactNode;
 };
 
-// added as part of context refactoring to test
+/* // added as part of context refactoring to test
 const initialPyramidDetailsState: PyramidDetailsState = {
   pyramidDetails: null,
   pyramidDetailsStatus: ProcessingStatusType.pending,
@@ -37,8 +38,9 @@ export const PyramidContext = React.createContext<{
   state: initialPyramidDetailsState,
   dispatchPyramidDetail: () => undefined,
 });
-
+*/
 const PyramidManagerContainer = ({children}: Props): JSX.Element => {
+  /*
   // added as part of context refactoring to test
   const [state, dispatchPyramidDetail] = React.useReducer(
     pyramidDetailsReducer,
@@ -47,18 +49,19 @@ const PyramidManagerContainer = ({children}: Props): JSX.Element => {
 
   const contextProviderValue = {state, dispatchPyramidDetail};
 
-  // Hold Club Details in State
-  //const [{pyramidDetails, pyramidDetailsStatus}] = usePyramidDetailApi(
   usePyramidDetailApi(
     //state,
     dispatchPyramidDetail,
   );
 
-  const {pyramidDetails, pyramidDetailsStatus} = state;
+  const {pyramidDetails, pyramidDetailsStatus} = state; */
 
   //
   const [{clubs, clubStatus}, clubSearchDispatch] = useClubSearchApi();
 
+  const pyramidContext = React.useContext(PyramidContext);
+
+  /*
   if (pyramidDetailsStatus === ProcessingStatusType.pending) {
     return (
       <>
@@ -72,30 +75,29 @@ const PyramidManagerContainer = ({children}: Props): JSX.Element => {
       </>
     );
   }
+  */
 
   return (
-    <PyramidContext.Provider value={contextProviderValue}>
-      <Grid container>
-        <Grid item xs={12}>
-          <Typography variant="body1">Pyramid</Typography>
-        </Grid>
-        <Grid item xs={6}>
-          <PyramidSearch
-            pyramidDetails={pyramidDetails}
-            pyramidDetailsStatus={pyramidDetailsStatus}
-            clubSearchDispatch={clubSearchDispatch}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <PyramidManagerClubSearchContainer
-            resultType={'List'}
-            resultContext={'PyramidManager'}
-            clubSearchState={{clubs, clubStatus}}
-            clubSearchDispatch={clubSearchDispatch}
-          />
-        </Grid>
+    <Grid container>
+      <Grid item xs={12}>
+        <Typography variant="body1">Pyramid</Typography>
       </Grid>
-    </PyramidContext.Provider>
+      <Grid item xs={6}>
+        <PyramidSearch
+          pyramidDetails={pyramidContext.state.pyramidDetails}
+          pyramidDetailsStatus={pyramidContext.state.pyramidDetailsStatus}
+          clubSearchDispatch={clubSearchDispatch}
+        />
+      </Grid>
+      <Grid item xs={6}>
+        <PyramidManagerClubSearchContainer
+          resultType={'List'}
+          resultContext={'PyramidManager'}
+          clubSearchState={{clubs, clubStatus}}
+          clubSearchDispatch={clubSearchDispatch}
+        />
+      </Grid>
+    </Grid>
   );
 };
 

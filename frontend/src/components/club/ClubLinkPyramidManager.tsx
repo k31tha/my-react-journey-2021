@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {ClubPyramidLinkType, ClubSearchActionType} from '../../types/clubtypes';
-import {PyramidContext} from '../../containers/PyramidManagerContainer';
+import {PyramidContext} from '../../App';
 import {PyramidDetailsActionType} from '../../types/pyramidtypes';
 import {updateClubPyramid} from '../../api/clubApi';
 import Grid from '@material-ui/core/Grid';

@@ -7,7 +7,7 @@ import PyramidSearchByActiveFlag from './PyramidSearchByActiveFlag';
 import {PyramidDetail, ClubPyramidStatusType} from '../../types/pyramidtypes';
 import {ClubSearchAction} from '../../types/clubtypes';
 import {ProcessingStatus} from '../../types/nlstypes';
-import {PyramidContext} from '../../containers/PyramidManagerContainer';
+import {PyramidContext} from '../../App';
 import {
   filterByStep,
   filterByPyramidName,

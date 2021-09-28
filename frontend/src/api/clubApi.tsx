@@ -1,6 +1,10 @@
 import axios from 'axios';
-import {updateClubPyramidApi, addClubApi} from '../api/apiConsts';
-import {ClubDetailApi} from '../types/clubtypes';
+import {
+  updateClubPyramidApi,
+  addClubApi,
+  addClubBasicSocialApi,
+} from '../api/apiConsts';
+import {ClubDetailApi, ClubBasicSocialDetailApi} from '../types/clubtypes';
 export async function updateClubPyramid(clubId: number, pyramidId: number) {
   try {
     const response = await axios.post(updateClubPyramidApi, {
@@ -20,5 +24,21 @@ export async function addClub(clubDetail: ClubDetailApi) {
     }
   } catch (error) {
     return clubDetail;
+  }
+}
+
+export async function addClubBasicSocial(
+  clubBasicSocialDetail: ClubBasicSocialDetailApi,
+) {
+  try {
+    const response = await axios.post(
+      addClubBasicSocialApi,
+      clubBasicSocialDetail,
+    );
+    if (response.status === 200) {
+      return response.data;
+    }
+  } catch (error) {
+    return clubBasicSocialDetail;
   }
 }
